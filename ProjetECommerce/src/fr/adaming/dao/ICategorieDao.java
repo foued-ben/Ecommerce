@@ -12,6 +12,6 @@ public interface ICategorieDao {
 	public List<Categorie> getAllCategories() ;  
 	public Categorie addCategorie(Categorie c) ; 
 	public int deleteCategorie(Categorie c) ; 
-	public Categorie updateClient(Categorie c) ; 
-	public Categorie getProduit(Categorie c) ;
+	public int updateCategorie(Categorie c) ; 
+	public Categorie getCategorie(Categorie c) ;
 }

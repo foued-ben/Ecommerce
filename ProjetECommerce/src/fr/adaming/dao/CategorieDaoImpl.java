@@ -43,15 +43,27 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	public Categorie updateClient(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateCategorie(Categorie c) {
+		String req ="UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.description=:pDescription WHERE cat.idCategorie=:pIDCategorie";
+		Query query =em.createQuery(req);
+		// Passage des paramètre
+		query.setParameter("pNom", c.getNomCategorie());
+		query.setParameter("pDescription", c.getDescription());
+		query.setParameter("pIDCategorie", c.getIdCategorie());
+		int verif = query.executeUpdate();
+		//System.out.println(c);
+		return verif;
 	}
 
 	@Override
-	public Categorie getProduit(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+	public Categorie getCategorie(Categorie c) {
+		String req ="SELECT cat FROM Categorie cat WHERE cat.idCategorie=:pIDCategorie";
+		Query query = em.createQuery(req);
+		
+		//Passage du paramètre.
+		query.setParameter("pIDCategorie", c.getIdCategorie());
+		Categorie categorieCherche = (Categorie) query.getSingleResult();
+		return categorieCherche;
 	}
 
 }

@@ -30,15 +30,14 @@ public class CategorieServiceImpl implements ICategorieService{
 	}
 
 	@Override
-	public Categorie updateClient(Categorie c) {
+	public int updateCategorie(Categorie c) {
 		// TODO Auto-generated method stub
-		return null;
+		return categorieDao.updateCategorie(c);
 	}
 
 	@Override
-	public Categorie getProduit(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+	public Categorie getCategorie(Categorie c) {
+		return categorieDao.getCategorie(c);
 	}
 
 }
