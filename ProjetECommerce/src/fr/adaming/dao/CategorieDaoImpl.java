@@ -32,9 +32,14 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	public int deleteProduit(Categorie c) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteCategorie(Categorie c) {
+		String req ="DELETE Categorie cat WHERE cat.idCategorie=:pIDCategorie";
+		Query query = em.createQuery(req);
+		
+		// Passage paramètre
+		query.setParameter("pIDCategorie", c.getIdCategorie());
+		int verif = query.executeUpdate();
+		return verif;
 	}
 
 	@Override

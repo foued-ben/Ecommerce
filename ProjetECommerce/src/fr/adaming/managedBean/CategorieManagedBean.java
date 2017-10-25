@@ -59,5 +59,14 @@ public class CategorieManagedBean {
 		System.out.println(listeCategories);
 	}
 	
+	public String supprimerCategorie(){
+		int verif = categorieService.deleteCategorie(this.categorie);
+		if (verif == 1){
+			return "accueiladmin";
+		}else {
+			return "suppressioncategorie";
+		}
+	}
+	
 	
 }
