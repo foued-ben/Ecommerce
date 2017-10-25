@@ -2,12 +2,15 @@ package fr.adaming.modele;
 
 public class Produit {
 
-	int idProduit;
-	String designation;
-	String description;
-	double prix;
-	int quantite;
-	boolean selectionne;
+	private int idProduit;
+	private String designation;
+	private String description;
+	private double prix;
+	private int quantite;
+	private boolean selectionne;
+	
+	// Association avec la catégorie
+	private Categorie categorie;
 	
 	// Constructeur vides
 	public Produit() {

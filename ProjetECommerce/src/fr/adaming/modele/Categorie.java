@@ -1,10 +1,15 @@
 package fr.adaming.modele;
 
+import java.util.List;
+
 public class Categorie {
 	
-	int idCategorie;
-	String nomCategorie;
-	String description;
+	private int idCategorie;
+	private String nomCategorie;
+	private String description;
+	
+	//Association avec la liste de produits
+	private List<Produit> listeProduits;
 	
 	public Categorie() {
 		super();

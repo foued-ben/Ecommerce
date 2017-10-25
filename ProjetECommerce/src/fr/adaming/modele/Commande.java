@@ -6,8 +6,9 @@ import java.util.Date;
 
 public class Commande{
 	// Attributs
-	int idCommande;
+	private	int idCommande;
 	private Date dateCommande ;
+	
 	// Constructeurs
 	public Commande() {
 		super();

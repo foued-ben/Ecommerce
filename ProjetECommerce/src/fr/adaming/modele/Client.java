@@ -3,11 +3,11 @@ package fr.adaming.modele;
 public class Client {
 
 	//Attributs
-	int idClient;
-	String nomClient;
-	String adresse;
-	String email;
-	String tel;
+	private int idClient;
+	private String nomClient;
+	private String adresse;
+	private String email;
+	private String tel;
 	// Constructeurs
 	public Client() {
 		super();
