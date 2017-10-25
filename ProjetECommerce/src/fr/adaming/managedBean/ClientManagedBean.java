@@ -1,13 +1,16 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.adaming.modele.Administrateur;
+import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
 import fr.adaming.service.IClientService;
 
@@ -55,7 +58,19 @@ public class ClientManagedBean implements Serializable{
 		this.admin = admin;
 	}
 	
-	
+	// les methodes
+	public String afficherCategories() {
+
+		List<Categorie> listeCategories = cliService.getAllCategories();
+		
+		if(listeCategories !=null){
+			maSession.setAttribute("categorieListe", listeCategories);
+			return "categorie"; 
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produite"));
+			return "categorie" ; 
+		}
+	}
 	
 	
 	

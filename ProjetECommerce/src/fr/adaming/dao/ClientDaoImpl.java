@@ -2,30 +2,46 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
+@Stateless
 public class ClientDaoImpl implements IClientDao {
 
-	@PersistenceContext(unitName = "ProjetECommerce") 
+	@PersistenceContext(unitName = "ProjetECommerce")
 	EntityManager em;
-	
-	
+
 	@Override
 	public List<Categorie> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		String req ="Select c from Categorie c" ; 
+		
+		Query query = em.createQuery(req);
+		List<Categorie> listeCategories = query.getResultList() ;
+		
+		return listeCategories ; 
 	}
 
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+		String req = "Select p from Produit p where p.categorie.idCategorie=:pidc";
+
+		// creation de query
+		Query query = em.createQuery(req);
+
+		// passage des param
+		query.setParameter("pidc", c.getIdCategorie());
+
+		List<Produit> listeProduitsCat = query.getResultList();
+		// envoyer la requete et récuperer le résultat
+
+		return listeProduitsCat;
 	}
 
 	@Override

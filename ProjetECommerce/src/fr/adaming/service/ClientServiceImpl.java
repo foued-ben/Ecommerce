@@ -2,23 +2,32 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
+
+import fr.adaming.dao.ClientDaoImpl;
+import fr.adaming.dao.IClientDao;
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
+
+@Stateful
 public class ClientServiceImpl implements IClientService {
 
+	@EJB
+	IClientDao cliDao = new ClientDaoImpl(); 
+	
+	
 	@Override
 	public List<Categorie> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		return cliDao.getAllCategories();
 	}
 
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+		return cliDao.getAllProduitByCategorie(c);
 	}
 
 	@Override
