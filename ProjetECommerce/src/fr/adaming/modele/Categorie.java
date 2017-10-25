@@ -53,6 +53,14 @@ public class Categorie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
+	}
+	
 	// toString
 
 	@Override

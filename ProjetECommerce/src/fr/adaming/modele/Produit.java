@@ -76,7 +76,20 @@ public class Produit {
 	public void setSelectionne(boolean selectionne) {
 		this.selectionne = selectionne;
 	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
+	}
 	// toString
+
 
 	@Override
 	public String toString() {

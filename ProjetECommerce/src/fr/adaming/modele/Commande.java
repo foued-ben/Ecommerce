@@ -41,6 +41,19 @@ public class Commande{
 	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
+	
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 	//toString
 	@Override
 	public String toString() {

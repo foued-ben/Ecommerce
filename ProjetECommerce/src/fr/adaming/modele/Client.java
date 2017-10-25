@@ -77,7 +77,16 @@ public class Client {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
 	// toString
+
 
 	@Override
 	public String toString() {
