@@ -10,7 +10,7 @@ import fr.adaming.modele.Administrateur;
 @Stateless
 public class AdministrateurDaoImpl implements IAdministrateurDao {
 
-		@PersistenceContext(unitName = "PU_TP") 
+		@PersistenceContext(unitName = "ProjetECommerce") 
 		EntityManager em;
 
 	@Override
