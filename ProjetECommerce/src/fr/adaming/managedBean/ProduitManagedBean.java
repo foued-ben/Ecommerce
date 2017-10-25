@@ -53,5 +53,14 @@ public class ProduitManagedBean {
 		}
 	}
 	
+	public void modifierProduit(){
+		int verif = produitService.updateClient(this.produit);
+		if(verif==1){
+			System.out.println("Modification effectuée");
+		}else{
+			System.out.println("Modification non effectuée");
+		}
+	}
+	
 	
 }

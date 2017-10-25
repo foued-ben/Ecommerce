@@ -40,8 +40,18 @@ public class ProduitDaoImpl implements IProduitDao{
 
 	@Override
 	public int updateClient(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+		String req ="UPDATE Produit prod SET prod.designation=:pDesignation, prod.description=:pDescription, prod.prix=:pPrix, prod.quantite=:pQuantite WHERE prod.idProduit=:pIDProduit";
+		Query query=em.createQuery(req);
+		
+		//Passage des paramètres
+		query.setParameter("pDesignation", p.getDesignation());
+		query.setParameter("pDescription", p.getDescription());
+		query.setParameter("pPrix", p.getPrix());
+		query.setParameter("pQuantite", p.getQuantite());
+		query.setParameter("pIDProduit", p.getIdProduit());
+
+		int verif = query.executeUpdate();
+		return verif;
 	}
 
 	@Override
