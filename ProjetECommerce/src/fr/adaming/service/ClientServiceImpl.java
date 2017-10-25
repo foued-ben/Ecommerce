@@ -1,21 +1,14 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
-public class ClientDaoImpl implements IClientDao {
+public class ClientServiceImpl implements IClientService {
 
-	@PersistenceContext(unitName = "ProjetECommerce") 
-	EntityManager em;
-	
-	
 	@Override
 	public List<Categorie> getAllCategories() {
 		// TODO Auto-generated method stub
