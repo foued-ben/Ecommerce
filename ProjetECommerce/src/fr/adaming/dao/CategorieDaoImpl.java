@@ -2,11 +2,12 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.adaming.modele.Categorie;
-
+@Stateless
 public class CategorieDaoImpl implements ICategorieDao {
 
 	@PersistenceContext(unitName = "ProjetECommerce") 
@@ -31,9 +32,9 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	public int updateClient(Categorie c) {
+	public Categorie updateClient(Categorie c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
