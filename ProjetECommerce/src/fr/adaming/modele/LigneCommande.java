@@ -11,7 +11,7 @@ public class LigneCommande {
 	//Association avec produits (Ligne commande n'est pas stocké dans la base de données)
 	@Transient
 	private Produit produit;
-	//Association avec Commande (Ligne commande n'est pas stocké dans la base de données)
+	//Association avec Commande (Ligne commande n'est pas stocké dans la base de données)	
 	@Transient
 	private Commande commande;
 	
