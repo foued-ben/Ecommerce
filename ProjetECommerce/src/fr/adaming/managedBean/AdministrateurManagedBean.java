@@ -29,6 +29,7 @@ public class AdministrateurManagedBean implements Serializable {
 	public IAdministrateurService getAdminService() {
 		return adminService;
 	}
+	
 
 
 	public void setAdminService(IAdministrateurService adminService) {
