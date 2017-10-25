@@ -26,7 +26,7 @@ public class AdministrateurDaoImpl implements IAdministrateurDao {
 
 		// envoyer la requete et récuperer le résultat
 		Administrateur a_out =  (Administrateur) query.getSingleResult();
-
+		System.out.println(a_out);
 		return a_out;
 	}
 
