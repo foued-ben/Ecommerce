@@ -3,18 +3,31 @@ package fr.adaming.dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.adaming.modele.Administrateur;
 
 @Stateless
 public class AdministrateurDaoImpl implements IAdministrateurDao {
 
-	@PersistenceContext(unitName="ProjetECommerce")
-	EntityManager em;
+		@PersistenceContext(unitName = "PU_TP") 
+		EntityManager em;
+
 	@Override
 	public Administrateur connexion(Administrateur a) {
-		// TODO Auto-generated method stub
-		return null;
+		String req = "Select a from Agent a where a.identifiant=:pIdentifiant and a.mdp=:pMdp";
+
+		// creation de query
+		Query query = em.createQuery(req);
+
+		// passage des param
+		query.setParameter("pIdentifiant", a.getIdentifiant());
+		query.setParameter("pMdp", a.getMdp());
+
+		// envoyer la requete et récuperer le résultat
+		Administrateur a_out =  (Administrateur) query.getSingleResult();
+
+		return a_out;
 	}
 
 }
