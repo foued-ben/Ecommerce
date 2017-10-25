@@ -18,7 +18,7 @@ public class AdministrateurManagedBean implements Serializable {
 	@EJB
 	private IAdministrateurService adminService ; 
 	
-	Administrateur admin ; 
+	private Administrateur admin ; 
 	
 	
 	public AdministrateurManagedBean() {
@@ -37,6 +37,16 @@ public class AdministrateurManagedBean implements Serializable {
 	}
 	
 	
+	public Administrateur getAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(Administrateur admin) {
+		this.admin = admin;
+	}
+
+
 	// les methodes métiers du managedBean
 	public String seConnecter(){
 		try {
