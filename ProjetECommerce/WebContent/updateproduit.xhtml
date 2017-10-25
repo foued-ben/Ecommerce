@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Accueil</title>
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<p:panelGrid columns="2">
+					ID du produit": <p:inputText
+				value="#{produitMB.produit.idProduit}" />
+		
+					Désignation du produit: <p:inputText
+				value="#{produitMB.produit.designation}" />
+		
+		
+			Description du produit: <p:inputText
+				value="#{produitMB.produit.description}" />
+				
+				Prix du produit <p:inputText
+				value="#{produitMB.produit.prix}" />
+				
+
+				Quantité <p:inputText
+				value="#{produitMB.produit.quantite}" />
+				
+			<h:commandButton value="Modifier"
+				action="#{produitMB.modifierProduit}" />
+
+		</p:panelGrid>
+
+
+	</h:form>
+
+
+
+</h:body>
+
+
+
+</html>
