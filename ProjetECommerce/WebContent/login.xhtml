@@ -5,12 +5,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Login</title>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<h:panelGrid columns="2">
+			Identification : <h:inputText value="#{aMB.agent.mail}"/>
+			Mot de passe :<h:inputText value="#{aMB.agent.mdp}"/>
+			
+			<h:commandButton value="Se connecter" action="#{aMB.seConnecter}"/>
+			</h:panelGrid>
+	
+		</h:form>
+	<h:messages style="color:red"></h:messages>
+	
+	
+	</h:body>
+	
+	
 
-<h:head>
-<title>Page Login</title>
-</h:head>
-
-<h:body>
-
-</h:body>
 </html>
