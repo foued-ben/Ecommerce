@@ -2,6 +2,7 @@ package fr.adaming.modele;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Produit {
 	private String description;
 	private double prix;
 	private int quantite;
+	@Column(columnDefinition="TINYINT(1)")
 	private boolean selectionne;
 	
 	// Association avec la catégorie
