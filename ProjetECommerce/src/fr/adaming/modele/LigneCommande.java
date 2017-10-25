@@ -1,10 +1,19 @@
 package fr.adaming.modele;
 
+
 public class LigneCommande {
 	
 	// attributs
 	private int quantite ; 
 	private double prix ;
+	
+	//Association avec produits
+	private Produit produit;
+	//Association ave Commande
+	private Commande commande;
+	// Association avec Panier
+	private Panier panier;
+	
 	
 	// constructeurs
 	public LigneCommande() {

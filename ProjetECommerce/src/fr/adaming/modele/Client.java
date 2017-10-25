@@ -1,5 +1,7 @@
 package fr.adaming.modele;
 
+import java.util.List;
+
 public class Client {
 
 	//Attributs
@@ -8,6 +10,11 @@ public class Client {
 	private String adresse;
 	private String email;
 	private String tel;
+	
+	// Association avec Commande
+	private List<Commande> commandes;
+	
+	
 	// Constructeurs
 	public Client() {
 		super();

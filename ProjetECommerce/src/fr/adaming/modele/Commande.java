@@ -1,6 +1,7 @@
 package fr.adaming.modele;
 
 import java.util.Date;
+import java.util.List;
 
 
 
@@ -8,6 +9,11 @@ public class Commande{
 	// Attributs
 	private	int idCommande;
 	private Date dateCommande ;
+	
+	// Association avec LigneCommande
+	private List<LigneCommande> listeLigneCommande;
+	// Association avec un client
+	private Client client;
 	
 	// Constructeurs
 	public Commande() {

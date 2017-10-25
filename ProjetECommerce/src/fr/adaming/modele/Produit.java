@@ -1,5 +1,7 @@
 package fr.adaming.modele;
 
+import java.util.List;
+
 public class Produit {
 
 	private int idProduit;
@@ -11,6 +13,9 @@ public class Produit {
 	
 	// Association avec la catégorie
 	private Categorie categorie;
+	// Association avec ligne de commande
+	private List<LigneCommande> listeLigneCommande;
+	
 	
 	// Constructeur vides
 	public Produit() {
