@@ -9,6 +9,7 @@ import fr.adaming.entities.Utilisateur;
 
 public class DeleteTest {
 
+	// Test de commentaire
 	
 	public static void main(String[] args) {
 		
