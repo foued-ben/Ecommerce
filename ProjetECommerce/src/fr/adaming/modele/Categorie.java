@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +19,7 @@ public class Categorie {
 	private String description;
 	
 	//Association avec la liste de produits
+	//@OneToMany
 	private List<Produit> listeProduits;
 	
 	public Categorie() {

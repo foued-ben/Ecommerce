@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="clients")
@@ -21,6 +22,7 @@ public class Client {
 	private String tel;
 	
 	// Association avec Commande
+	//@OneToMany
 	private List<Commande> commandes;
 	
 	

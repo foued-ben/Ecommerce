@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -21,8 +22,10 @@ public class Commande{
 	private Date dateCommande ;
 	
 	// Association avec LigneCommande
+	
 	private List<LigneCommande> listeLigneCommande;
 	// Association avec un client
+	//@ManyToOne
 	private Client client;
 	
 	// Constructeurs
