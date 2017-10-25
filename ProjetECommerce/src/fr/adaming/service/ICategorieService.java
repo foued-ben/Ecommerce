@@ -6,8 +6,8 @@ import fr.adaming.modele.Categorie;
 
 public interface ICategorieService {
 	public List<Categorie> getAllCategories() ;  
-	public int addCategorie(Categorie c) ; 
+	public Categorie addCategorie(Categorie c) ; 
 	public int deleteProduit(Categorie c) ; 
-	public int updateClient(Categorie c) ; 
+	public Categorie updateClient(Categorie c) ; 
 	public Categorie getProduit(Categorie c) ;
 }

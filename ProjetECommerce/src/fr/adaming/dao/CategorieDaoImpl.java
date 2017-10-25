@@ -2,10 +2,16 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import fr.adaming.modele.Categorie;
 
 public class CategorieDaoImpl implements ICategorieDao {
 
+	@PersistenceContext(unitName = "ProjetECommerce") 
+	EntityManager em;
+	
 	@Override
 	public List<Categorie> getAllCategories() {
 		// TODO Auto-generated method stub
@@ -13,9 +19,9 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	public int addCategorie(Categorie c) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Categorie addCategorie(Categorie c) {
+		em.persist(c);
+		return c;
 	}
 
 	@Override

@@ -13,9 +13,9 @@ public class CategorieServiceImpl implements ICategorieService{
 	}
 
 	@Override
-	public int addCategorie(Categorie c) {
+	public Categorie addCategorie(Categorie c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
@@ -25,9 +25,9 @@ public class CategorieServiceImpl implements ICategorieService{
 	}
 
 	@Override
-	public int updateClient(Categorie c) {
+	public Categorie updateClient(Categorie c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override

@@ -2,10 +2,16 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import fr.adaming.modele.Produit;
 
 public class ProduitDaoImpl implements IProduitDao{
 
+	@PersistenceContext(unitName = "ProjetECommerce") 
+	EntityManager em;
+	
 	@Override
 	public List<Produit> getAllProduits() {
 		// TODO Auto-generated method stub
