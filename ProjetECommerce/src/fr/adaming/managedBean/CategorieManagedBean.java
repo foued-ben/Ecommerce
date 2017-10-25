@@ -1,5 +1,7 @@
 package fr.adaming.managedBean;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -50,6 +52,11 @@ public class CategorieManagedBean {
 		}else{
 			return "ajoutcategorie";
 		}
+	}
+	
+	public void listerCategorie(){
+		List<Categorie> listeCategories = categorieService.getAllCategories();
+		System.out.println(listeCategories);
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.adaming.modele.Categorie;
 @Stateless
@@ -15,8 +16,13 @@ public class CategorieDaoImpl implements ICategorieDao {
 	
 	@Override
 	public List<Categorie> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		String req ="SELECT cat FROM Categorie cat";
+		Query query = em.createQuery(req);
+		@SuppressWarnings("unchecked")
+		List<Categorie> listeCategorie = query.getResultList();
+		
+		
+		return listeCategorie;
 	}
 
 	@Override
