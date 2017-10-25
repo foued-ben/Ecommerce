@@ -23,15 +23,19 @@ public class ProduitDaoImpl implements IProduitDao{
 	}
 
 	@Override
-	public int addProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Produit addProduit(Produit p) {
+		em.persist(p);
+		return p;
 	}
 
 	@Override
 	public int deleteProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+		String req = "DELETE Produit prod WHERE prod.idProduit=:pIDProduit";
+		Query query = em.createQuery(req);
+		//Passage paramètre
+		query.setParameter("pIDProduit", p.getIdProduit());
+		int verif = query.executeUpdate();
+		return verif;
 	}
 
 	@Override

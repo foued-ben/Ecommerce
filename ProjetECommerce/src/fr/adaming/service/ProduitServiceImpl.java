@@ -21,15 +21,13 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	public int addProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Produit addProduit(Produit p) {
+		return produitDao.addProduit(p);
 	}
 
 	@Override
 	public int deleteProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+		return produitDao.deleteProduit(p);
 	}
 
 	@Override
