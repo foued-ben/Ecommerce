@@ -11,8 +11,8 @@
 		<p:breadCrumb>
 		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
 		<p:menuitem value="Catégories" url="categorie.xhtml" />
-		<p:menuitem value="" url="CC.xhtml" />
-		<p:menuitem value="Gestion de compte épargnes" url="CE.xhtml" />
+		<p:menuitem value="Produits" url="#" />
+		<p:menuitem value="Mon panier" url="#" />
 	</p:breadCrumb>
 	</h:form>
 		<h:form>
@@ -22,4 +22,26 @@
 	<p:spacer height="20px" />
 
 
+	<h1 style="color: gold; text-align: center">Liste des Catégories</h1>
+
+<form>
+	<p:dataTable var="cat" value="#{sessionScope.categoriesListe}">
+		<p:column headerText="Id">
+			<h:outputText value="#{cat.idCategorie}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{cat.nomCategorie}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{cat.description}" />
+		</p:column>
+
+	
+	</p:dataTable>
+	
+	<p:spacer height="100px" />
+	<p:separator />
+</form>
 </html>

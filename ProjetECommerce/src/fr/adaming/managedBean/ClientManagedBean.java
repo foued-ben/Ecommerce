@@ -6,22 +6,31 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.adaming.modele.Administrateur;
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
+import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IClientService;
 
+@ManagedBean(name="cliMB")
+@RequestScoped
 public class ClientManagedBean implements Serializable{
 
 	@EJB
 	IClientService cliService;
 	
+	@EJB
+	ICategorieService catService ; 
+	
 	private Client client;
 	private Administrateur admin ; 
 	private HttpSession maSession;
+	private Categorie categorie ;
 	
 	
 	public ClientManagedBean() {
@@ -61,14 +70,20 @@ public class ClientManagedBean implements Serializable{
 	// les methodes
 	public String afficherCategories() {
 
+
+		Client client_out = this.client ; 
 		List<Categorie> listeCategories = cliService.getAllCategories();
 		
 		if(listeCategories !=null){
-			maSession.setAttribute("categorieListe", listeCategories);
+			maSession.setAttribute("categoriesListe", listeCategories);
+
+			//ajout du client dans la session
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clientSession", client_out);
+			
 			return "categorie"; 
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produite"));
-			return "categorie" ; 
+			return "accueilclient" ; 
 		}
 	}
 	

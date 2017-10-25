@@ -13,17 +13,19 @@
 <h:body>
 
 <h1>Cher client bonjour.</h1>
-
-	<p:breadCrumb>
-		<p:menuitem value="Revenir à l'accueil" url="#" />
-		<p:menuitem value="Ajouter un produit" url="#" />
-		<p:menuitem value="Ajouter une catégorie de produits" url="#" />
-		<p:menuitem value="Supprimer un produit" url="#" />
-		<p:menuitem value="Supprimer une catégorie de produit" url="#" />
-		<p:menuitem value="Modifier un produit" url="#" />
-		<p:menuitem value="Modifier une catégorie de produit" url="#" />
-		<p:menuitem value="Consulter" url="#" />
+<h:form>
+		<p:breadCrumb>
+		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
+		<p:menuitem value="Catégories" action="#{cliMB.afficherCategories}" />
+		<p:menuitem value="Produits" url="#" />
+		<p:menuitem value="Mon panier" url="#" />
 	</p:breadCrumb>
+	</h:form>
+		<h:form>
+		<h:commandButton value="Se déconnecter"  action="#{cMB.seDeconnecter}" />
+	</h:form>
+	<p:separator />
+	<p:spacer height="20px" />
 
 </h:body>
 
