@@ -1,7 +1,17 @@
 package fr.adaming.modele;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="administrateurs")
 public class Administrateur {
 	// Attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAdmin;
 	private String identifiant;
 	private String mdp;

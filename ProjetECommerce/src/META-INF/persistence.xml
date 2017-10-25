@@ -7,7 +7,12 @@
 		<!-- Datasource utilisée -->
 		<jta-data-source>java:/dataSourceECommerce1</jta-data-source>
 		<!-- Classes persistantes  -->
-	
+		<class>fr.adaming.modele.Administrateur</class>
+		<class>fr.adaming.modele.Categorie</class>
+		<class>fr.adaming.modele.Client</class>
+		<class>fr.adaming.modele.Commande</class>
+		<class>fr.adaming.modele.Produit</class>
+		
 			
 		<!-- les props de hibernate -->
 		<properties>
