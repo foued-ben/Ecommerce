@@ -2,11 +2,13 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.adaming.modele.Produit;
-
+@Stateless
 public class ProduitDaoImpl implements IProduitDao{
 
 	@PersistenceContext(unitName = "ProjetECommerce") 
@@ -14,8 +16,10 @@ public class ProduitDaoImpl implements IProduitDao{
 	
 	@Override
 	public List<Produit> getAllProduits() {
-		// TODO Auto-generated method stub
-		return null;
+		String req ="Select prod from Produit prod";
+		Query query = em.createQuery(req);
+		List<Produit> listeProduits = query.getResultList();
+		return listeProduits;
 	}
 
 	@Override

@@ -11,8 +11,10 @@ import javax.faces.context.FacesContext;
 
 import fr.adaming.modele.Administrateur;
 import fr.adaming.modele.Categorie;
+import fr.adaming.modele.Produit;
 import fr.adaming.service.IAdministrateurService;
 import fr.adaming.service.ICategorieService;
+import fr.adaming.service.IProduitService;
 
 @ManagedBean(name="aMB")
 @RequestScoped
@@ -22,6 +24,8 @@ public class AdministrateurManagedBean implements Serializable {
 	private IAdministrateurService adminService ; 
 	@EJB
 	private ICategorieService categorieService;
+	@EJB
+	private IProduitService produitService;
 	private Administrateur admin ; 
 	
 	
@@ -64,6 +68,11 @@ public class AdministrateurManagedBean implements Serializable {
 			List<Categorie> listeCategories = categorieService.getAllCategories();
 			System.out.println("Liste des catégories");
 			System.out.println(listeCategories);
+			
+			//On récupère la liste des produits
+			List<Produit> listesProduits = produitService.getAllProduits();
+			System.out.println("Liste des produits");
+			System.out.println(listesProduits);
 			
 			return "succes" ; 
 		} catch (Exception e) {
