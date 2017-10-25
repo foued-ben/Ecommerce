@@ -2,8 +2,17 @@ package fr.adaming.modele;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="categories")
 public class Categorie {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCategorie;
 	private String nomCategorie;
 	private String description;
@@ -53,6 +62,14 @@ public class Categorie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
+	}
+	
 	// toString
 
 	@Override

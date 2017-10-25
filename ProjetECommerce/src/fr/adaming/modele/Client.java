@@ -2,9 +2,18 @@ package fr.adaming.modele;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="clients")
 public class Client {
 
 	//Attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idClient;
 	private String nomClient;
 	private String adresse;
@@ -77,7 +86,16 @@ public class Client {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
 	// toString
+
 
 	@Override
 	public String toString() {
