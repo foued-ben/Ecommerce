@@ -2,24 +2,26 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="ProjetECommerce" transaction-type="JTA">
-	
+	<persistence-unit name="ProjetECommerce"
+		transaction-type="JTA">
+
 		<!-- Datasource utilisée -->
 		<jta-data-source>java:/dataSourceECommerce1</jta-data-source>
-		<!-- Classes persistantes  -->
+		
+		<!-- Classes persistantes -->
 		<class>fr.adaming.modele.Administrateur</class>
 		<class>fr.adaming.modele.Categorie</class>
 		<class>fr.adaming.modele.Client</class>
 		<class>fr.adaming.modele.Commande</class>
 		<class>fr.adaming.modele.Produit</class>
-		
-			
+
+
 		<!-- les props de hibernate -->
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 
-	
+
 	</persistence-unit>
 </persistence>

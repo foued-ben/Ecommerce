@@ -2,12 +2,14 @@ package fr.adaming.modele;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="clients")
 public class Client {
@@ -15,6 +17,7 @@ public class Client {
 	//Attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_client")
 	private int idClient;
 	private String nomClient;
 	private String adresse;
@@ -22,7 +25,7 @@ public class Client {
 	private String tel;
 	
 	// Association avec Commande
-	//@OneToMany
+	@OneToMany(mappedBy="client")
 	private List<Commande> commandes;
 	
 	

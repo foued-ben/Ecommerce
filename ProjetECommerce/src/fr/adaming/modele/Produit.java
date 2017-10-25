@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="produits")
@@ -22,8 +25,13 @@ public class Produit {
 	private boolean selectionne;
 	
 	// Association avec la catégorie
+	@ManyToOne
+	@JoinColumn(name="id_categorie",referencedColumnName="id_Categorie")
 	private Categorie categorie;
+	
 	// Association avec ligne de commande
+	//(Ligne commande n'est pas stocké dans la base de données il ne faut pas stocker l'attribut de l'association)
+	@Transient
 	private List<LigneCommande> listeLigneCommande;
 	
 	

@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -21,11 +23,14 @@ public class Commande{
 	private	int idCommande;
 	private Date dateCommande ;
 	
-	// Association avec LigneCommande
-	
+	// Association avec LigneCommande 
+	//(Ligne commande n'est pas stocké dans la base de données pas besoin de stocker l'attribut de l'association)
+	@Transient
 	private List<LigneCommande> listeLigneCommande;
 	// Association avec un client
-	//@ManyToOne
+	
+	@ManyToOne
+	@JoinColumn(name="id_client",referencedColumnName="id_client")
 	private Client client;
 	
 	// Constructeurs

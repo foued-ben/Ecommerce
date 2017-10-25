@@ -1,5 +1,6 @@
 package fr.adaming.modele;
 
+import javax.persistence.Transient;
 
 public class LigneCommande {
 	
@@ -7,9 +8,11 @@ public class LigneCommande {
 	private int quantite ; 
 	private double prix ;
 	
-	//Association avec produits
+	//Association avec produits (Ligne commande n'est pas stocké dans la base de données)
+	@Transient
 	private Produit produit;
-	//Association ave Commande
+	//Association avec Commande (Ligne commande n'est pas stocké dans la base de données)
+	@Transient
 	private Commande commande;
 	
 	
