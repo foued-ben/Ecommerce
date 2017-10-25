@@ -15,7 +15,7 @@ public class AdministrateurDaoImpl implements IAdministrateurDao {
 
 	@Override
 	public Administrateur connexion(Administrateur a) {
-		String req = "Select a from Agent a where a.identifiant=:pIdentifiant and a.mdp=:pMdp";
+		String req = "Select a from Administrateur a where a.identifiant=:pIdentifiant and a.mdp=:pMdp";
 
 		// creation de query
 		Query query = em.createQuery(req);
