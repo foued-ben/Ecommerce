@@ -68,5 +68,25 @@ public class CategorieManagedBean {
 		}
 	}
 	
+	public void modifierCategorie(){
+		int verif = categorieService.updateCategorie(this.categorie);
+		if(verif==1){
+			System.out.println("Modification effectuée");
+		}else {
+			System.out.println("Modification non effectuée");
+		}
+	}
+	
+	public void rechercheCategorie(){
+		Categorie categorieCherche = categorieService.getCategorie(this.categorie);
+		if(categorieCherche!=null){
+			System.out.println("Trouvée");
+			System.out.println(categorieCherche);
+		}else{
+			System.out.println("Pas trouvée");
+			System.out.println(categorieCherche);
+		}
+	}
+	
 	
 }
