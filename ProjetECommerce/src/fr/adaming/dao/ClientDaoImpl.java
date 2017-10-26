@@ -27,6 +27,16 @@ public class ClientDaoImpl implements IClientDao {
 		
 		return listeCategories ; 
 	}
+	
+	@Override
+	public List<Produit> getAllProduits() {
+		String req ="Select p from Produit p" ; 
+		
+		Query query = em.createQuery(req);
+		List<Produit> listeProduits = query.getResultList() ;
+		
+		return listeProduits ; 
+	}
 
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie c) {

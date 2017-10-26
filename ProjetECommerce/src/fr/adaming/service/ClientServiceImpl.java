@@ -60,4 +60,9 @@ public class ClientServiceImpl implements IClientService {
 		return 0;
 	}
 
+	@Override
+	public List<Produit> getAllProduits() {
+		return cliDao.getAllProduits();
+	}
+
 }

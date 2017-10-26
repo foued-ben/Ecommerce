@@ -25,26 +25,29 @@
 
 
 
-<h1 style="color: gold; text-align: center">Liste des Catégories</h1>
+<h1 style="color: gold; text-align: center">Liste des Produits</h1>
 
-	<p:dataTable var="cat" value="#{cliMB.listeCategories}" id="listeCat">
+	<p:dataTable var="prod" value="#{cliMB.listeProduits}" id="listeProd">
 		<p:column headerText="Id">
-			<h:outputText value="#{cat.idCategorie}" />
+			<h:outputText value="#{prod.idProduit}" />
 		</p:column>
 
 		<p:column headerText="Nom">
-			<h:outputText value="#{cat.nomCategorie}" />
+			<h:outputText value="#{prod.designation}" />
 		</p:column>
 
 		<p:column headerText="Description">
-			<h:outputText value="#{cat.description}" />
+			<h:outputText value="#{prod.description}" />
 		</p:column>
 		
-		<p:column headerText="Vers les produits">
-			<h:form>
-			 <p:commandButton  value="Ouvrir la catégorie" actionListener="#{cliMB.afficherProduitByCat}"  styleClass="ui-priority-primary" />
-			</h:form>
+		<p:column headerText="En stock">
+			<h:outputText value="#{prod.quantite}" />
 		</p:column>
+		
+		<p:column headerText="Prix (€)">
+			<h:outputText value="#{prod.prix}"/>
+		</p:column>
+		
 		
 	</p:dataTable>
 

@@ -13,6 +13,7 @@ import fr.adaming.modele.Produit;
 @Local
 public interface IClientService {
 	public List<Categorie> getAllCategories() ; 
+	public List<Produit> getAllProduits() ;
 	public List<Produit> getAllProduitByCategorie(Categorie c) ; 
 	public List<Produit> getProduitsSelect(List<Produit> lp) ; 
 	public List<Produit> getProduitsByMot(String mot) ; 
