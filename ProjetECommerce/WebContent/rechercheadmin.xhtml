@@ -7,11 +7,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Recherche d'une catégorie</title>
+	<title>Recherche une catégorie ou un produit</title>
 </h:head>
 
 <h:body>
 
+	<h1>Rechercher une catégorie</h1>
 	<h:form>
 
 		<p:panelGrid columns="2">
@@ -25,6 +26,19 @@
 
 	</h:form>
 
+	<h1>Rechercher un produit</h1>
+	<h:form>
+
+		<p:panelGrid columns="2">
+			ID du produit": <p:inputText
+				value="#{produitMB.produit.idProduit}" />
+
+			<p:commandButton value="Rechercher le produit"
+				action="#{produitMB.rechercherProduit}" />
+		</p:panelGrid>
+
+
+	</h:form>
 
 
 </h:body>

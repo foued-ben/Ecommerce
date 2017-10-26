@@ -31,14 +31,13 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	public int updateClient(Produit p) {
+	public int updateProduit(Produit p) {
 		return produitDao.updateClient(p);
 	}
 
 	@Override
 	public Produit getProduit(Produit p) {
-		// TODO Auto-generated method stubs
-		return null;
+		return produitDao.getProduit(p);
 	}
 
 	

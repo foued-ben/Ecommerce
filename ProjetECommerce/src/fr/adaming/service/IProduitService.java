@@ -8,6 +8,6 @@ public interface IProduitService {
 	public List<Produit> getAllProduits() ;  
 	public Produit addProduit(Produit p) ; 
 	public int deleteProduit(Produit p) ; 
-	public int updateClient(Produit p) ; 
+	public int updateProduit(Produit p) ; 
 	public Produit getProduit(Produit p) ;
 }

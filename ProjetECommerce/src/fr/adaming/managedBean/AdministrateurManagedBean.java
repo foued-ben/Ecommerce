@@ -1,6 +1,7 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -27,10 +28,12 @@ public class AdministrateurManagedBean implements Serializable {
 	@EJB
 	private IProduitService produitService;
 	private Administrateur admin ; 
-	
-	
+	private List<Categorie> listeCategories;
+	private List<Produit> listeProduits;
+
 	public AdministrateurManagedBean() {
 		this.admin=new Administrateur();
+		this.listeCategories =new ArrayList<>();
 	}
 
 
@@ -53,6 +56,24 @@ public class AdministrateurManagedBean implements Serializable {
 	public void setAdmin(Administrateur admin) {
 		this.admin = admin;
 	}
+	
+	public List<Categorie> getListeCategories() {
+		return listeCategories;
+	}
+
+
+	public void setListeCategories(List<Categorie> listeCategories) {
+		this.listeCategories = listeCategories;
+	}
+
+	
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
+	}
 
 
 	// les methodes métiers du managedBean
@@ -65,14 +86,26 @@ public class AdministrateurManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("adminSession", admin_out);
 			
 			// On récupère la liste des catégories
-			List<Categorie> listeCategories = categorieService.getAllCategories();
-			System.out.println("Liste des catégories");
-			System.out.println(listeCategories);
+			List<Categorie> listeCatTemp = categorieService.getAllCategories();
+			if (listeCatTemp!=null){
+				this.listeCategories = listeCatTemp;
+				System.out.println("Liste des catégories");
+				System.out.println(listeCategories);
+			}else {
+				System.out.println("pas de catégories");
+			}
 			
 			//On récupère la liste des produits
-			List<Produit> listesProduits = produitService.getAllProduits();
-			System.out.println("Liste des produits");
-			System.out.println(listesProduits);
+			List<Produit> listeProdTemp = produitService.getAllProduits();
+
+			if(listeProdTemp!=null){
+				this.listeProduits = listeProdTemp;
+				System.out.println("Liste des produits");
+				System.out.println(listeProduits);
+
+			}else{
+				System.out.println("Pas de produits proposé");
+			}
 			
 			return "succes" ; 
 		} catch (Exception e) {

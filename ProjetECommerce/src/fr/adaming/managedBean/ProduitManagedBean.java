@@ -54,11 +54,20 @@ public class ProduitManagedBean {
 	}
 	
 	public void modifierProduit(){
-		int verif = produitService.updateClient(this.produit);
+		int verif = produitService.updateProduit(this.produit);
 		if(verif==1){
 			System.out.println("Modification effectuée");
 		}else{
 			System.out.println("Modification non effectuée");
+		}
+	}
+	
+	public void rechercherProduit(){
+		Produit produitChercher = produitService.getProduit(this.produit);
+		if(produitChercher!=null){
+			System.out.println(produitChercher);
+		}else{
+			System.out.println("Introuvable");
 		}
 	}
 	

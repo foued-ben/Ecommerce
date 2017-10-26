@@ -56,8 +56,13 @@ public class ProduitDaoImpl implements IProduitDao{
 
 	@Override
 	public Produit getProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		String req ="SELECT prod from Produit prod WHERE prod.idProduit=:pIDProduit";
+		Query query = em.createQuery(req);
+		
+		// Passage du paramètre
+		query.setParameter("pIDProduit",p.getIdProduit());
+		Produit produitCherche = (Produit) query.getSingleResult();
+		return produitCherche;
 	}
 
 }

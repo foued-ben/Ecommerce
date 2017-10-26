@@ -26,7 +26,56 @@
 		<p:menuitem value="Consulter" url="rechercheadmin.xhtml" />
 	</p:breadCrumb>
 
+<h1>Liste des catégories</h1>
+
+
+<p:dataTable var="categorie" value="#{aMB.listeCategories}">
+    <p:column headerText="Id">
+        <h:outputText value="#{categorie.idCategorie}" />
+    </p:column>
+ 
+    <p:column headerText="Désignation">
+        <h:outputText value="#{categorie.nomCategorie}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{categorie.description}" />
+    </p:column>
+ 
+
+</p:dataTable>
+
+<h1>Liste des produits</h1>
+
+<p:dataTable var="produit" value="#{aMB.listeProduits}">
+    <p:column headerText="Id">
+        <h:outputText value="#{produit.idProduit}" />
+    </p:column>
+ 
+    <p:column headerText="Désignation">
+        <h:outputText value="#{produit.designation}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{produit.description}" />
+    </p:column>
+ 
+    <p:column headerText="Prix">
+        <h:outputText value="#{produit.prix}" />
+    </p:column>
+  
+    <p:column headerText="Stock">
+        <h:outputText value="#{produit.quantite}" />
+    </p:column>
+
+</p:dataTable>
+
+
+
+
+
 </h:body>
+
 
 
 
