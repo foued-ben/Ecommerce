@@ -4,28 +4,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head><title>categories</title></h:head>
+<h:head>
+	<title>categories</title>
+</h:head>
 <h:form>
-		<p:breadCrumb>
+	<p:breadCrumb>
 		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
 		<p:menuitem value="Catégories" url="categorie.xhtml" />
 		<p:menuitem value="Produits" url="#" />
 		<p:menuitem value="Mon panier" url="#" />
 	</p:breadCrumb>
-	</h:form>
-		<h:form>
-		<h:commandButton value="Se déconnecter"  action="#{cMB.seDeconnecter}" />
-	</h:form>
-	<p:separator />
-	<p:spacer height="20px" />
+</h:form>
+<h:form>
+	<h:commandButton value="Se déconnecter" action="#{cMB.seDeconnecter}" />
+</h:form>
+<p:separator />
+<p:spacer height="20px" />
+
+<h:form>
+	<p:commandButton value="Afficher les catégories" type="submit"
+		action="#{cliMB.afficherCategories}" icon="ui-icon-disk" update=":listeCat" />
+</h:form>
 
 
-	<h1 style="color: gold; text-align: center">Liste des Catégories</h1>
+<h1 style="color: gold; text-align: center">Liste des Catégories</h1>
 
 <form>
-	<p:dataTable var="cat" value="#{sessionScope.categoriesListe}">
+	<p:dataTable var="cat" value="#{cliMB.listeCategories}" id="listeCat">
 		<p:column headerText="Id">
 			<h:outputText value="#{cat.idCategorie}" />
 		</p:column>
@@ -38,10 +45,12 @@
 			<h:outputText value="#{cat.description}" />
 		</p:column>
 
-	
+
 	</p:dataTable>
-	
+
 	<p:spacer height="100px" />
 	<p:separator />
+
+		<h:messages style="color:red"></h:messages>
 </form>
 </html>
