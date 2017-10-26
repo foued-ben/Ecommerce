@@ -5,7 +5,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import javax.validation.ConstraintViolationException;
 
 import fr.adaming.modele.Categorie;
 @Stateless
@@ -38,8 +40,13 @@ public class CategorieDaoImpl implements ICategorieDao {
 		
 		// Passage paramètre
 		query.setParameter("pIDCategorie", c.getIdCategorie());
-		int verif = query.executeUpdate();
-		return verif;
+		try{
+			int verif = query.executeUpdate();
+			return verif;
+		} catch(PersistenceException e){
+			System.out.println("Veuiller supprimer les produits de cette catégorie avant de supprimer la catégorie");
+			return -1;
+		}
 	}
 
 	@Override

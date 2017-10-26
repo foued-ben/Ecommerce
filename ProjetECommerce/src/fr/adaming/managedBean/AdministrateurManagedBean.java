@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import fr.adaming.modele.Administrateur;
@@ -89,6 +90,8 @@ public class AdministrateurManagedBean implements Serializable {
 			List<Categorie> listeCatTemp = categorieService.getAllCategories();
 			if (listeCatTemp!=null){
 				this.listeCategories = listeCatTemp;
+				// On ajoute la liste à la session
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeCategories", listeCategories);
 				System.out.println("Liste des catégories");
 				System.out.println(listeCategories);
 			}else {
@@ -100,6 +103,7 @@ public class AdministrateurManagedBean implements Serializable {
 
 			if(listeProdTemp!=null){
 				this.listeProduits = listeProdTemp;
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeProduits", listeProduits);
 				System.out.println("Liste des produits");
 				System.out.println(listeProduits);
 

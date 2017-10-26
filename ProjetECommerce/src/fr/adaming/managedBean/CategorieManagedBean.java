@@ -1,12 +1,17 @@
 package fr.adaming.managedBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.persistence.PersistenceException;
 
 import fr.adaming.modele.Categorie;
+import fr.adaming.modele.Produit;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name="categorieMB")
@@ -18,10 +23,10 @@ public class CategorieManagedBean {
 	
 	// Attributs 
 	private Categorie categorie;
+
 	// Constructeurs
 
 	public CategorieManagedBean() {
-		super();
 		this.categorie = new Categorie();
 	}
 	// Getters/Setters
@@ -41,12 +46,17 @@ public class CategorieManagedBean {
 		this.categorie = categorie;
 	}
 	
-	
+
+
 	// Méthodes du ManagedBean
 	public String ajouterCategorie(){
 		Categorie categorieAjoute = categorieService.addCategorie(this.categorie);
 		if(categorieAjoute.getIdCategorie()!=0){
 			// La catégorie a bien été ajoutée.
+			// On récupère la liste des catégories et on l'ajoute dans la session
+			List<Categorie> listeCatTemp = categorieService.getAllCategories();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeCategories", listeCatTemp);
+
 			System.out.println("Ajoutée");
 			return "accueiladmin";
 		}else{
@@ -62,18 +72,32 @@ public class CategorieManagedBean {
 	public String supprimerCategorie(){
 		int verif = categorieService.deleteCategorie(this.categorie);
 		if (verif == 1){
+			// On récupère la liste des catégories et on l'ajoute dans la session
+			List<Categorie> listeCatTemp = categorieService.getAllCategories();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeCategories", listeCatTemp);
 			return "accueiladmin";
-		}else {
+		}
+		if(verif ==-1){
+			System.out.println("Impossible");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression de cette catégorie est impossible certains produits proposés sont de cette  catégorie. Veuillez supprimer les produits et recommencer."));
 			return "suppressioncategorie";
 		}
+		System.out.println("Rien d'ajouté");
+		return "suppressioncategorie";
+		
 	}
 	
-	public void modifierCategorie(){
+	public String modifierCategorie(){
 		int verif = categorieService.updateCategorie(this.categorie);
 		if(verif==1){
 			System.out.println("Modification effectuée");
+			// On récupère la liste des catégories et on l'ajoute dans la session
+			List<Categorie> listeCatTemp = categorieService.getAllCategories();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeCategories", listeCatTemp);
+			return "accueiladmin";
 		}else {
 			System.out.println("Modification non effectuée");
+			return "accueiladmin";
 		}
 	}
 	

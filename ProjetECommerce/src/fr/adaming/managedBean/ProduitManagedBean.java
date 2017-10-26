@@ -1,5 +1,7 @@
 package fr.adaming.managedBean;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -12,9 +14,11 @@ import fr.adaming.service.IProduitService;
 public class ProduitManagedBean {
 	
 	private Produit produit;
-	
+	private List<Produit> listeProduits;
+
 	@EJB
 	private IProduitService produitService;
+	
 // Constructeur
 	public ProduitManagedBean() {
 		this.produit=new Produit();

@@ -29,7 +29,7 @@
 <h1>Liste des catégories</h1>
 
 
-<p:dataTable var="categorie" value="#{aMB.listeCategories}">
+<p:dataTable var="categorie" value="#{sessionScope.listeCategories}">
     <p:column headerText="Id">
         <h:outputText value="#{categorie.idCategorie}" />
     </p:column>
@@ -47,7 +47,7 @@
 
 <h1>Liste des produits</h1>
 
-<p:dataTable var="produit" value="#{aMB.listeProduits}">
+<p:dataTable var="produit" value="#{sessionScope.listeProduits}">
     <p:column headerText="Id">
         <h:outputText value="#{produit.idProduit}" />
     </p:column>

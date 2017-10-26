@@ -11,20 +11,17 @@
 
 <h:body>
 
-		<h:form>
-	
-			<p:panelGrid columns="2">
-			ID de la catégorie": <p:inputText value="#{categorieMB.categorie.idCategorie}" />
-
-
-			<p:commandButton value="Ajouter la catégorie" action="#{categorieMB.supprimerCategorie}" />
+	<h:form>
+		<p:panelGrid columns="2">
+			ID de la catégorie : <p:inputText value ="#{categorieMB.categorie.idCategorie}"/>
+			<p:commandButton value="Supprimer la catégorie" action ="#{categorieMB.supprimerCategorie}"/>
 		</p:panelGrid>
-	
-	
+		
 	</h:form>
+	<h:messages style="color:red"></h:messages>
 
 
-	
+
 </h:body>
 
 
