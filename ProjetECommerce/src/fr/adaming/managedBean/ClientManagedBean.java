@@ -156,6 +156,14 @@ public class ClientManagedBean implements Serializable {
 		// Ajouter le panier à la session
 		maSession.setAttribute("panierSession", panierSession);
 		System.out.println("Panier ajouté");
+		
+		// On créer la liste de produit contenant tous les produits.
+		List<Produit> listeTousProduits = produitService.getAllProduits();
+		// On ajoute la liste à la session
+		this.listeProduits = listeTousProduits;
+		maSession.setAttribute("listeProduits", listeProduits);
+		System.out.println("La liste des produits est"+listeProduits);
+
 		return "accueilclient";
 	}
 	
