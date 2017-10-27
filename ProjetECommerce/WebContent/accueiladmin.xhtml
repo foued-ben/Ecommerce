@@ -15,62 +15,70 @@
 		<h:commandButton value="Se déconnecter" action="#{aMB.seDeconnecter}" />
 	</h:form>
 
-<h:form>
-	<p:breadCrumb>
-		<p:menuitem value="Revenir à l'accueil" url="accueiladmin.xhtml" />
-		<p:menuitem value="Ajouter un produit" url="ajoutproduit.xhtml" />
-		<p:menuitem value="Ajouter une catégorie de produits" url="ajoutcategorie.xhtml" />
-		<p:menuitem value="Supprimer un produit" url="suppressionproduit.xhtml" />
-		<p:menuitem value="Supprimer une catégorie de produit" url="suppressioncategorie.xhtml" />
-		<p:menuitem value="Modifier un produit" url="updateproduit.xhtml" />
-		<p:menuitem value="Modifier une catégorie de produit" url="updatecategorie.xhtml" />
-		<p:menuitem value="Consulter" url="rechercheadmin.xhtml"/>
-	</p:breadCrumb>
-</h:form>
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Revenir à l'accueil" url="accueiladmin.xhtml" />
+			<p:menuitem value="Ajouter un produit" url="ajoutproduit.xhtml" />
+			<p:menuitem value="Ajouter une catégorie de produits"
+				url="ajoutcategorie.xhtml" />
+			<p:menuitem value="Supprimer un produit"
+				url="suppressionproduit.xhtml" />
+			<p:menuitem value="Supprimer une catégorie de produit"
+				url="suppressioncategorie.xhtml" />
+			<p:menuitem value="Modifier un produit" url="updateproduit.xhtml" />
+			<p:menuitem value="Modifier une catégorie de produit"
+				url="updatecategorie.xhtml" />
+			<p:menuitem value="Consulter" url="rechercheadmin.xhtml" />
+		</p:breadCrumb>
+	</h:form>
 
-<h1>Liste des catégories</h1>
+	<h1>Liste des catégories</h1>
 
 
-<p:dataTable var="categorie" value="#{sessionScope.listeCategories}">
-    <p:column headerText="Id">
-        <h:outputText value="#{categorie.idCategorie}" />
-    </p:column>
- 
-    <p:column headerText="Désignation">
-        <h:outputText value="#{categorie.nomCategorie}" />
-    </p:column>
- 
-    <p:column headerText="Description">
-        <h:outputText value="#{categorie.description}" />
-    </p:column>
- 
+	<p:dataTable var="categorie" value="#{sessionScope.listeCategories}">
+		<p:column headerText="Id">
+			<h:outputText value="#{categorie.idCategorie}" />
+		</p:column>
 
-</p:dataTable>
+		<p:column headerText="Désignation">
+			<h:outputText value="#{categorie.nomCategorie}" />
+		</p:column>
 
-<h1>Liste des produits</h1>
+		<p:column headerText="Description">
+			<h:outputText value="#{categorie.description}" />
+		</p:column>
 
-<p:dataTable var="produit" value="#{sessionScope.listeProduits}">
-    <p:column headerText="Id">
-        <h:outputText value="#{produit.idProduit}" />
-    </p:column>
- 
-    <p:column headerText="Désignation">
-        <h:outputText value="#{produit.designation}" />
-    </p:column>
- 
-    <p:column headerText="Description">
-        <h:outputText value="#{produit.description}" />
-    </p:column>
- 
-    <p:column headerText="Prix">
-        <h:outputText value="#{produit.prix}" />
-    </p:column>
-  
-    <p:column headerText="Stock">
-        <h:outputText value="#{produit.quantite}" />
-    </p:column>
 
-</p:dataTable>
+	</p:dataTable>
+
+	<h1>Liste des produits</h1>
+
+	<p:dataTable var="produit" value="#{sessionScope.listeProduits}">
+		<p:column headerText="Id">
+			<h:outputText value="#{produit.idProduit}" />
+		</p:column>
+
+		<p:column headerText="Désignation">
+			<h:outputText value="#{produit.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{produit.description}" />
+		</p:column>
+
+		<p:column headerText="Prix">
+			<h:outputText value="#{produit.prix}" />
+		</p:column>
+
+		<p:column headerText="Stock">
+			<h:outputText value="#{produit.quantite}" />
+		</p:column>
+
+		<p:column headerTexy="Categorie">
+			<h:outputText value="#{produit.categorie.idCategorie}" />
+		</p:column>
+
+	</p:dataTable>
 
 
 

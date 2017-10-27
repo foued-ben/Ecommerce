@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Produit;
 import fr.adaming.service.IProduitService;
 
@@ -17,10 +18,10 @@ public class ProduitManagedBean {
 	
 	private Produit produit;
 	private List<Produit> listeProduits;
+	private int idCategorie;
 
 	@EJB
 	private IProduitService produitService;
-	
 // Constructeur
 	public ProduitManagedBean() {
 		this.produit=new Produit();
@@ -31,25 +32,40 @@ public class ProduitManagedBean {
 	public Produit getProduit() {
 		return produit;
 	}
+	
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+	
 	public IProduitService getProduitService() {
 		return produitService;
 	}
+	
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
+	
 	public List<Produit> getListeProduits() {
 		return listeProduits;
 	}
-
+	
 	public void setListeProduits(List<Produit> listeProduits) {
 		this.listeProduits = listeProduits;
+	}
+	
+	public int getIdCategorie() {
+		return idCategorie;
+	}
+	
+	public void setIdCategorie(int idCategorie) {
+		this.idCategorie = idCategorie;
 	}
 
 	// Méthodes Propres.
 	public String ajouterProduit(){
+		Categorie catTemp =new Categorie();
+		catTemp.setIdCategorie(idCategorie);
+		this.produit.setCategorie(catTemp);
 		Produit produitAjoute = produitService.addProduit(this.produit);
 		if(produitAjoute.getIdProduit()!=0){
 			System.out.println("Ajout effectué");

@@ -59,7 +59,7 @@ public class ClientManagedBean implements Serializable {
 		
 		this.listeCategories=cliService.getAllCategories();
 		this.listeProduits = cliService.getAllProduits();
-
+		//this.listeProduits = new ArrayList<>();
 	}
 
 	public Client getClient() {
@@ -111,8 +111,9 @@ public class ClientManagedBean implements Serializable {
 		List<Categorie> listeOut = cliService.getAllCategories();
 
 		if (listeOut != null) {
-			// maSession.setAttribute("categoriesListe", listeCategories);
 			this.listeCategories = listeOut;
+
+			 maSession.setAttribute("categoriesListe", listeCategories);
 
 			return "categorie";
 		} else {
@@ -124,7 +125,7 @@ public class ClientManagedBean implements Serializable {
 	
 	public String afficherProduits() {
 
-		List<Produit> listeOut = cliService.getAllProduits();
+		List<Produit> listeOut = cliService.getAllProduitByCategorie(this.categorie);
 
 		if (listeOut != null) {
 			// maSession.setAttribute("categoriesListe", listeCategories);
@@ -138,12 +139,17 @@ public class ClientManagedBean implements Serializable {
 	}
 	
 	public String afficherProduitsByCat() {
-
+		//System.out.println("L'id de la catégorie est");
+		//System.out.println(this.categorie.getIdCategorie());
+		
+		
 		List<Produit> listeOut = cliService.getAllProduitByCategorie(this.categorie);
-
+		
+		System.out.println(listeOut);
 		if (listeOut != null) {
-			// maSession.setAttribute("categoriesListe", listeCategories);
+			 maSession.setAttribute("categoriesListe", listeCategories);
 			this.listeProduits = listeOut;
+			System.out.println("La liste des produits est"+listeProduits);
 
 			return "produitclient";
 		} else {

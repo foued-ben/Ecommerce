@@ -9,23 +9,26 @@
 <h:head>
 	<title>categories</title>
 </h:head>
-<h:form>
-	<p:breadCrumb>
-		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
-		<p:menuitem value="Catégories" url="categorie.xhtml" update=":listeCat" />
-		<p:menuitem value="Produits" url="produitclient.xhtml" update=":listeProd" />
-		<p:menuitem value="Mon panier" url="#" />
-	</p:breadCrumb>
-</h:form>
-<p:separator />
-<p:spacer height="20px" />
+<h:body>
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Accueil" url="accueilclient.xhtml" />
+			<p:menuitem value="Catégories" url="categorie.xhtml"
+				update=":listeCat" />
+			<p:menuitem value="Produits" url="produitclient.xhtml"
+				update=":listeProd" />
+			<p:menuitem value="Mon panier" url="#" />
+		</p:breadCrumb>
+	</h:form>
+	<p:separator />
+	<p:spacer height="20px" />
 
 
 
 
 
 
-<h1 style="color: gold; text-align: center">Liste des Produits</h1>
+	<h1 style="color: gold; text-align: center">Liste des Produits</h1>
 
 	<p:dataTable var="prod" value="#{cliMB.listeProduits}" id="listeProd">
 		<p:column headerText="Id">
@@ -39,21 +42,21 @@
 		<p:column headerText="Description">
 			<h:outputText value="#{prod.description}" />
 		</p:column>
-		
+
 		<p:column headerText="En stock">
 			<h:outputText value="#{prod.quantite}" />
 		</p:column>
-		
+
 		<p:column headerText="Prix (€)">
-			<h:outputText value="#{prod.prix}"/>
+			<h:outputText value="#{prod.prix}" />
 		</p:column>
-		
-		
+
+
 	</p:dataTable>
 
 	<p:spacer height="100px" />
 	<p:separator />
 
-		<h:messages style="color:red"></h:messages>
-
+	<h:messages style="color:red"></h:messages>
+</h:body>
 </html>

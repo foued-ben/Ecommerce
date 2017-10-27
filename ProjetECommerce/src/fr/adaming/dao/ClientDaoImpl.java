@@ -48,10 +48,16 @@ public class ClientDaoImpl implements IClientDao {
 		// passage des param
 		query.setParameter("pidc", c.getIdCategorie());
 
+		try{
 		List<Produit> listeProduitsCat = query.getResultList();
+		return listeProduitsCat;
+
+		} catch (Exception e){
+			System.out.println("Impossible de trouver");
+			return null;
+		}
 		// envoyer la requete et récuperer le résultat
 
-		return listeProduitsCat;
 	}
 
 	@Override
