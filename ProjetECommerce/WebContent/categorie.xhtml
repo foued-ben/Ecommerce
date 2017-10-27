@@ -15,7 +15,7 @@
 		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
 		<p:menuitem value="Catégories" url="categorie.xhtml" update=":listeCat" />
 		<p:menuitem value="Produits" url="produitclient.xhtml" update=":listeProd" />
-		<p:menuitem value="Mon panier" url="#" />
+		<p:menuitem value="Mon panier" url="panierclient.xhtml" />
 	</p:breadCrumb>
 </h:form>
 <p:separator />
@@ -43,7 +43,7 @@
 		
 		<p:column headerText="Vers les produits">
 			<h:form>
-			 <p:commandButton  value="Ouvrir la catégorie" action="#{cliMB.afficherProduits}"  styleClass="ui-priority-primary" >
+			 <p:commandButton  value="Ouvrir la catégorie" action="#{cliMB.afficherProduitsByCat}"  styleClass="ui-priority-primary" >
 			 	<f:setPropertyActionListener value="#{cat.idCategorie}" target="#{cliMB.categorie.idCategorie}"></f:setPropertyActionListener>
 			 </p:commandButton>
 			</h:form>

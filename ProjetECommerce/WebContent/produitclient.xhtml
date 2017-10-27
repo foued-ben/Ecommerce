@@ -17,7 +17,7 @@
 				update=":listeCat" />
 			<p:menuitem value="Produits" url="produitclient.xhtml"
 				update=":listeProd" />
-			<p:menuitem value="Mon panier" url="#" />
+			<p:menuitem value="Mon panier" url="panierclient.xhtml" />
 		</p:breadCrumb>
 	</h:form>
 	<p:separator />
@@ -30,7 +30,7 @@
 
 	<h1 style="color: gold; text-align: center">Liste des Produits</h1>
 
-	<p:dataTable var="prod" value="#{cliMB.listeProduits}" id="listeProd">
+	<p:dataTable var="prod" value="#{sessionScope.listeProduits}" id="listeProd">
 		<p:column headerText="Id">
 			<h:outputText value="#{prod.idProduit}" />
 		</p:column>
@@ -50,6 +50,18 @@
 		<p:column headerText="Prix (€)">
 			<h:outputText value="#{prod.prix}" />
 		</p:column>
+
+		<p:column headerText="Commander">
+			<h:form>
+				Nombre :<h:inputText value="#{cliMB.nombreCommande}" />
+				
+			 <p:commandButton  value="Commander" action="#{cliMB.ajouterPanier}"  styleClass="ui-priority-primary" >
+			 	<f:setPropertyActionListener value="#{prod.idProduit}" target="#{cliMB.produitDemande.idProduit}"></f:setPropertyActionListener>
+			 	
+			 </p:commandButton>
+			</h:form>
+		</p:column>
+		
 
 
 	</p:dataTable>

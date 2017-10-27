@@ -24,13 +24,13 @@
 
 
 	<h:messages style="color:red"></h:messages>
+
 	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Vous êtes un client. Cliquez ici"
-				url="accueilclient.xhtml" />
-		</p:breadCrumb>
+		<p:commandLink action="#{cliMB.instancierPanierDansSession}">
+			<h:outputText value="Client" />
+		</p:commandLink>
+
 	</h:form>
-	
 </h:body>
 
 
