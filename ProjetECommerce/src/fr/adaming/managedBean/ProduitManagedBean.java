@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import fr.adaming.modele.Produit;
 import fr.adaming.service.IProduitService;
@@ -39,35 +40,51 @@ public class ProduitManagedBean {
 	}
 
 	// Méthodes Propres.
-	public void ajouterProduit(){
+	public String ajouterProduit(){
 		Produit produitAjoute = produitService.addProduit(this.produit);
 		if(produitAjoute.getIdProduit()!=0){
 			System.out.println("Ajout effectué");
+			// On récupère la liste des produits et on l'ajoute à la session
+			List<Produit> listeProduits = produitService.getAllProduits();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeProduits", listeProduits);
+			return "accueiladmin"; 
 		}else{
 			System.out.println("Ajout non effectué");
+			return "ajoutproduit";
 		}
 	}
 	
-	public void supprimerProduit(){
+	public String supprimerProduit(){
 		int verif = produitService.deleteProduit(this.produit);
 		if(verif==1){
 			System.out.println("Suppression réussie");
+			// On récupère la liste des produits et on l'ajoute à la session
+			List<Produit> listeProduits = produitService.getAllProduits();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeProduits", listeProduits);
+			return "accueiladmin";
 		}else{
 			System.out.println("Suppression non effectuée");
+			return "suppressionproduit";
 		}
 	}
 	
-	public void modifierProduit(){
+	public String modifierProduit(){
 		int verif = produitService.updateProduit(this.produit);
 		if(verif==1){
 			System.out.println("Modification effectuée");
+			// On récupère la liste des produits et on l'ajoute à la session
+			List<Produit> listeProduits = produitService.getAllProduits();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listeProduits", listeProduits);
+			return "accueiladmin";
 		}else{
 			System.out.println("Modification non effectuée");
+			return "updateproduit";
 		}
 	}
 	
 	public void rechercherProduit(){
 		Produit produitChercher = produitService.getProduit(this.produit);
+		this.produit=produitChercher;
 		if(produitChercher!=null){
 			System.out.println(produitChercher);
 		}else{

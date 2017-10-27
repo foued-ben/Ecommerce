@@ -12,6 +12,20 @@
 
 <h:body>
 
+<h:form>
+	<p:breadCrumb>
+		<p:menuitem value="Revenir à l'accueil" url="accueiladmin.xhtml" />
+		<p:menuitem value="Ajouter un produit" url="ajoutproduit.xhtml" />
+		<p:menuitem value="Ajouter une catégorie de produits" url="ajoutcategorie.xhtml" />
+		<p:menuitem value="Supprimer un produit" url="suppressionproduit.xhtml" />
+		<p:menuitem value="Supprimer une catégorie de produit" url="suppressioncategorie.xhtml" />
+		<p:menuitem value="Modifier un produit" url="updateproduit.xhtml" />
+		<p:menuitem value="Modifier une catégorie de produit" url="updatecategorie.xhtml" />
+		<p:menuitem value="Consulter" url="rechercheadmin.xhtml" />
+	</p:breadCrumb>
+</h:form>
+
+
 	<h1>Rechercher une catégorie</h1>
 	<h:form>
 
@@ -20,7 +34,7 @@
 				value="#{categorieMB.categorie.idCategorie}" />
 
 			<p:commandButton value="Rechercher la catégorie"
-				action="#{categorieMB.rechercheCategorie}" />
+				action="#{categorieMB.rechercheCategorie}" update="resultatCategorie" />
 		</p:panelGrid>
 
 
@@ -34,11 +48,52 @@
 				value="#{produitMB.produit.idProduit}" />
 
 			<p:commandButton value="Rechercher le produit"
-				action="#{produitMB.rechercherProduit}" />
+				action="#{produitMB.rechercherProduit}" update="resultatProduit" />
 		</p:panelGrid>
 
 
 	</h:form>
+
+	<p:dataTable var="categorie" value="#{categorieMB.categorie}" id="resultatCategorie">
+    <p:column headerText="Id">
+        <h:outputText value="#{categorie.idCategorie}" />
+    </p:column>
+ 
+    <p:column headerText="Désignation">
+        <h:outputText value="#{categorie.nomCategorie}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{categorie.description}" />
+    </p:column>
+ 
+
+</p:dataTable>
+
+
+<p:dataTable var="produit" value="#{produitMB.produit}" id="resultatProduit">
+    <p:column headerText="Id">
+        <h:outputText value="#{produit.idProduit}" />
+    </p:column>
+ 
+    <p:column headerText="Désignation">
+        <h:outputText value="#{produit.designation}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{produit.description}" />
+    </p:column>
+ 
+    <p:column headerText="Prix">
+        <h:outputText value="#{produit.prix}" />
+    </p:column>
+  
+    <p:column headerText="Stock">
+        <h:outputText value="#{produit.quantite}" />
+    </p:column>
+
+</p:dataTable>
+
 
 
 </h:body>
