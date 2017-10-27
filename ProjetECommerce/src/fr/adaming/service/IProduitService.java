@@ -10,4 +10,6 @@ public interface IProduitService {
 	public int deleteProduit(Produit p) ; 
 	public int updateProduit(Produit p) ; 
 	public Produit getProduit(Produit p) ;
+	public List<Produit> getProduitByName(Produit p);
+
 }

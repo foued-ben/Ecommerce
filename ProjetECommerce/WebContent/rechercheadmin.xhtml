@@ -26,7 +26,7 @@
 </h:form>
 
 
-	<h1>Rechercher une catégorie</h1>
+	<h1>Rechercher une catégorie avec son ID</h1>
 	<h:form>
 
 		<p:panelGrid columns="2">
@@ -40,7 +40,23 @@
 
 	</h:form>
 
-	<h1>Rechercher un produit</h1>
+
+	<h1>Rechercher une catégorie avec son nom</h1>
+	<h:form>
+
+		<p:panelGrid columns="2">
+			ID de la catégorie": <p:inputText
+				value="#{categorieMB.categorie.nomCategorie}" />
+
+			<p:commandButton value="Rechercher la catégorie"
+				action="#{categorieMB.rechercheCategorieParNom}" update="resultatCategorie" />
+		</p:panelGrid>
+
+
+	</h:form>
+
+
+	<h1>Rechercher un produit par son ID</h1>
 	<h:form>
 
 		<p:panelGrid columns="2">
@@ -53,8 +69,24 @@
 
 
 	</h:form>
+	
+	<h1>Rechercher un produit par son nom</h1>
+	<h:form>
 
-	<p:dataTable var="categorie" value="#{categorieMB.categorie}" id="resultatCategorie">
+		<p:panelGrid columns="2">
+			ID du produit": <p:inputText
+				value="#{produitMB.produit.designation}" />
+
+			<p:commandButton value="Rechercher le produit"
+				action="#{produitMB.rechercherProduitParNom}" update="resultatProduit" />
+		</p:panelGrid>
+
+
+	</h:form>
+	
+	
+
+	<p:dataTable var="categorie" value="#{categorieMB.listeCategorie}" id="resultatCategorie">
     <p:column headerText="Id">
         <h:outputText value="#{categorie.idCategorie}" />
     </p:column>
@@ -71,7 +103,7 @@
 </p:dataTable>
 
 
-<p:dataTable var="produit" value="#{produitMB.produit}" id="resultatProduit">
+<p:dataTable var="produit" value="#{produitMB.listeProduits}" id="resultatProduit">
     <p:column headerText="Id">
         <h:outputText value="#{produit.idProduit}" />
     </p:column>

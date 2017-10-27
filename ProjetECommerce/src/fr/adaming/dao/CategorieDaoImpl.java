@@ -10,20 +10,20 @@ import javax.persistence.Query;
 import javax.validation.ConstraintViolationException;
 
 import fr.adaming.modele.Categorie;
+
 @Stateless
 public class CategorieDaoImpl implements ICategorieDao {
 
-	@PersistenceContext(unitName = "ProjetECommerce") 
+	@PersistenceContext(unitName = "ProjetECommerce")
 	EntityManager em;
-	
+
 	@Override
 	public List<Categorie> getAllCategories() {
-		String req ="SELECT cat FROM Categorie cat";
+		String req = "SELECT cat FROM Categorie cat";
 		Query query = em.createQuery(req);
 		@SuppressWarnings("unchecked")
 		List<Categorie> listeCategorie = query.getResultList();
-		
-		
+
 		return listeCategorie;
 	}
 
@@ -35,15 +35,15 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public int deleteCategorie(Categorie c) {
-		String req ="DELETE Categorie cat WHERE cat.idCategorie=:pIDCategorie";
+		String req = "DELETE Categorie cat WHERE cat.idCategorie=:pIDCategorie";
 		Query query = em.createQuery(req);
-		
+
 		// Passage paramètre
 		query.setParameter("pIDCategorie", c.getIdCategorie());
-		try{
+		try {
 			int verif = query.executeUpdate();
 			return verif;
-		} catch(PersistenceException e){
+		} catch (PersistenceException e) {
 			System.out.println("Veuiller supprimer les produits de cette catégorie avant de supprimer la catégorie");
 			return -1;
 		}
@@ -51,26 +51,46 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public int updateCategorie(Categorie c) {
-		String req ="UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.description=:pDescription WHERE cat.idCategorie=:pIDCategorie";
-		Query query =em.createQuery(req);
+		String req = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.description=:pDescription WHERE cat.idCategorie=:pIDCategorie";
+		Query query = em.createQuery(req);
 		// Passage des paramètre
 		query.setParameter("pNom", c.getNomCategorie());
 		query.setParameter("pDescription", c.getDescription());
 		query.setParameter("pIDCategorie", c.getIdCategorie());
 		int verif = query.executeUpdate();
-		//System.out.println(c);
+		// System.out.println(c);
 		return verif;
 	}
 
 	@Override
 	public Categorie getCategorie(Categorie c) {
-		String req ="SELECT cat FROM Categorie cat WHERE cat.idCategorie=:pIDCategorie";
+		String req = "SELECT cat FROM Categorie cat WHERE cat.idCategorie=:pIDCategorie";
 		Query query = em.createQuery(req);
-		
-		//Passage du paramètre.
+
+		// Passage du paramètre.
 		query.setParameter("pIDCategorie", c.getIdCategorie());
 		Categorie categorieCherche = (Categorie) query.getSingleResult();
 		return categorieCherche;
+	}
+
+	@Override
+	public List<Categorie> getCategorieIntitule(Categorie categorie) {
+		String req = "SELECT cat FROM Categorie cat WHERE cat.nomCategorie LIKE :pNomCategorie";
+		Query query = em.createQuery(req);
+
+		// Création du paramètre
+		StringBuilder intitule = new StringBuilder();
+		intitule.append(categorie.getNomCategorie());
+		intitule.append('%');
+		String intituleParam = intitule.toString();
+		System.out.println(intitule);
+		
+		// Passage du paramètre
+		query.setParameter("pNomCategorie", intituleParam);
+		@SuppressWarnings("unchecked")
+		List<Categorie> liste = (List<Categorie>) query.getResultList();
+		//System.out.println(categorieCherche);
+		return liste;
 	}
 
 }

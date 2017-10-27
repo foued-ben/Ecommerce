@@ -65,4 +65,21 @@ public class ProduitDaoImpl implements IProduitDao{
 		return produitCherche;
 	}
 
+	@Override
+	public List<Produit> getProduitByName(Produit p) {
+		String req = "SELECT prod FROM Produit prod WHERE prod.designation LIKE :pDesignation";
+		Query query = em.createQuery(req);
+		// Production du paramètre
+		StringBuilder intitule = new StringBuilder();
+		intitule.append(p.getDesignation());
+		intitule.append('%');
+		String intituleParam = intitule.toString();
+		//Passage du paramètre
+		query.setParameter("pDesignation", intituleParam);
+		@SuppressWarnings("unchecked")
+		List<Produit> liste = query.getResultList();
+		
+		return liste;
+	}
+
 }

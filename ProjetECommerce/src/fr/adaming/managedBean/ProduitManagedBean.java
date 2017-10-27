@@ -1,5 +1,6 @@
 package fr.adaming.managedBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -23,6 +24,7 @@ public class ProduitManagedBean {
 // Constructeur
 	public ProduitManagedBean() {
 		this.produit=new Produit();
+		listeProduits = new ArrayList<>();
 	}
 	
 	// Getters/Setters
@@ -37,6 +39,13 @@ public class ProduitManagedBean {
 	}
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
+	}
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
 	}
 
 	// Méthodes Propres.
@@ -90,6 +99,10 @@ public class ProduitManagedBean {
 		}else{
 			System.out.println("Introuvable");
 		}
+	}
+	public void rechercherProduitParNom(){
+		List<Produit> listeChercher = produitService.getProduitByName(this.produit);
+		this.listeProduits = listeChercher;
 	}
 	
 	

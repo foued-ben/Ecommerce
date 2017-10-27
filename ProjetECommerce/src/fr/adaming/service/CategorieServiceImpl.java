@@ -40,4 +40,9 @@ public class CategorieServiceImpl implements ICategorieService{
 		return categorieDao.getCategorie(c);
 	}
 
+	@Override
+	public List<Categorie> getCategorieIntitule(Categorie categorie) {
+		return categorieDao.getCategorieIntitule(categorie);
+	}
+
 }

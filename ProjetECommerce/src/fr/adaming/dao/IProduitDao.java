@@ -13,4 +13,5 @@ public interface IProduitDao {
 	public int deleteProduit(Produit p) ; 
 	public int updateClient(Produit p) ; 
 	public Produit getProduit(Produit p) ;
+	public List<Produit> getProduitByName(Produit p);
 }

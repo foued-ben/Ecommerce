@@ -23,11 +23,12 @@ public class CategorieManagedBean {
 
 	// Attributs
 	private Categorie categorie;
-
+	private List<Categorie> listeCategorie;
 	// Constructeurs
 
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
+		this.listeCategorie = new ArrayList<>();
 	}
 
 	// Getters/Setters
@@ -45,6 +46,16 @@ public class CategorieManagedBean {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+	
+	
+
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
+	public void setListeCategorie(List<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
 	}
 
 	// Méthodes du ManagedBean
@@ -106,7 +117,7 @@ public class CategorieManagedBean {
 
 	public void rechercheCategorie() {
 		Categorie categorieCherche = categorieService.getCategorie(this.categorie);
-		this.categorie = categorieCherche;
+		listeCategorie.add(categorieCherche);
 		if (categorieCherche != null) {
 			System.out.println("Trouvée");
 			System.out.println(categorieCherche);
@@ -114,6 +125,14 @@ public class CategorieManagedBean {
 			System.out.println("Pas trouvée");
 			System.out.println(categorieCherche);
 		}
+	}
+	
+	public void rechercheCategorieParNom(){
+		List<Categorie> listeCherche = categorieService.getCategorieIntitule(this.categorie);
+		this.listeCategorie = listeCherche;
+		System.out.println(listeCategorie);
+		
+		
 	}
 
 }
