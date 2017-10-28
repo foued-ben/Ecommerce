@@ -96,9 +96,28 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public int enregitrementClient(Client c, Panier pan) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Client enregitrementClient(Client c) {
+		String req = "INSERT INTO c Client c VALUES(:pNom, :pAdress, :pEmail, :pTel)";
+		// creation de query
+		Query query = em.createQuery(req);
+		
+		// passage des param
+		query.setParameter("pNom", c.getNomClient());
+		query.setParameter("pAdress", c.getAdresse());
+		query.setParameter("pEmail", c.getEmail());
+		query.setParameter("pTel", c.getTel());
+
+		Client c_out =  (Client) query.getSingleResult() ; 
+		// envoyer la requete et récuperer le résultat
+		
+		int verif = query.executeUpdate();
+		
+		
+		String req2 = "INSERT INTO c Client c VALUES(:pNom, :pAdress, :pEmail, :pTel)";
+
+		
+		
+		return c_out;
 	}
 
 }

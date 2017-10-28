@@ -54,9 +54,8 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public int enregitrementClient(Client c, Panier pan) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Client enregitrementClient(Client c) {
+		return cliDao.enregitrementClient(c);
 	}
 
 	@Override

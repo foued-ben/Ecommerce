@@ -19,7 +19,7 @@ public interface IClientDao {
 	public List<Produit> getProduitsByMot(String mot) ; 
 	public Produit addProduitPanier(Produit p, int quantite, Panier pan) ;
 	public int deleteProduitPanier(Produit p, Panier pan) ; 
-	public int enregitrementClient(Client c, Panier pan) ; 
+	public Client enregitrementClient(Client c) ; 
 
 
 

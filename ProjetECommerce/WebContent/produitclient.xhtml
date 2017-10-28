@@ -35,7 +35,7 @@
 				Rechercher un produit :<h:inputText value="#{cliMB.mot}" />
 
 		<p:commandButton value="Lancer la recherche" action="#{cliMB.rechProdByName}"
-			styleClass="ui-priority-primary" update=":listeProd">
+			styleClass="ui-priority-primary" update="@all">
 
 		</p:commandButton>
 	</h:form>

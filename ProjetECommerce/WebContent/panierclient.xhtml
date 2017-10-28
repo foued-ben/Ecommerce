@@ -10,55 +10,98 @@
 	<title>categories</title>
 </h:head>
 <h:body>
-<h:form>
-	<p:breadCrumb>
-		<p:menuitem value="Accueil" url="accueilclient.xhtml" />
-		<p:menuitem value="Catégories" url="categorie.xhtml" update=":listeCat" />
-		<p:menuitem value="Produits" url="produitclient.xhtml" update=":listeProd" />
-		<p:menuitem value="Mon panier" url="#" />
-	</p:breadCrumb>
-</h:form>
-<p:separator />
-<p:spacer height="20px" />
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Accueil" url="accueilclient.xhtml" />
+			<p:menuitem value="Catégories" url="categorie.xhtml"
+				update=":listeCat" />
+			<p:menuitem value="Produits" url="produitclient.xhtml"
+				update=":listeProd" />
+			<p:menuitem value="Mon panier" url="#" />
+		</p:breadCrumb>
+	</h:form>
+	<p:separator />
+	<p:spacer height="20px" />
 
 
 
 
 
 
-<h1 style="color: gold; text-align: center">Liste des produit de mon panier</h1>
+	<h1 style="color: gold; text-align: center">Liste des produit de
+		mon panier</h1>
 
-	<p:dataTable var="ligneCommande" value="#{sessionScope.panierSession.listeLignesCommande}" id="listePanier">
-		
+	<p:dataTable var="ligneCommande"
+		value="#{sessionScope.panierSession.listeLignesCommande}"
+		id="listePanier">
+
 		<p:column headerText="Prix Total">
 			<h:outputText value="#{ligneCommande.prix}" />
 		</p:column>
-		
+
 		<p:column headerText="Nombre d'unité">
 			<h:outputText value="#{ligneCommande.quantite}" />
 		</p:column>
-		
+
 		<p:column headerText="Designation">
 			<h:outputText value="#{ligneCommande.produit.designation}" />
 		</p:column>
-		
+
 		<p:column headerText="Supprimer des produits">
 			<h:form>
-			 <p:commandButton type="submit" value="Supprimer le produit du panier" action="#{cliMB.supprProdPanier}"  styleClass="ui-priority-primary" update="@all">
-			 	<f:setPropertyActionListener value="#{ligneCommande}" target="#{cliMB.ligneCommande}"></f:setPropertyActionListener>
-<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.quantite}" target="#{cliMB.ligneCommande.quantite}"></f:setPropertyActionListener>	 	 -->
-<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.produit.designation}" target="#{cliMB.ligneCommande.produit.designation}"></f:setPropertyActionListener>	 				 -->
-			 </p:commandButton>
+				<p:commandButton type="submit"
+					value="Supprimer le produit du panier"
+					action="#{cliMB.supprProdPanier}" styleClass="ui-priority-primary"
+					update="@all">
+					<f:setPropertyActionListener value="#{ligneCommande}"
+						target="#{cliMB.ligneCommande}"></f:setPropertyActionListener>
+					<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.quantite}" target="#{cliMB.ligneCommande.quantite}"></f:setPropertyActionListener>	 	 -->
+					<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.produit.designation}" target="#{cliMB.ligneCommande.produit.designation}"></f:setPropertyActionListener>	 				 -->
+				</p:commandButton>
 			</h:form>
 		</p:column>
-		
-		
+
+
 	</p:dataTable>
 
-	<p:spacer height="100px" />
+	<p:spacer height="50px" />
 	<p:separator />
 
-	
+
+
+
+
+
+
+		<h:form>
+			<h3 style="color: blue">Enregistrez vos coordonnées afin de poursuivre la commande</h3>
+
+
+			<h:panelGrid columns="2">
+				<p:outputLabel for="nomID" value="Nom:" />
+				<p:inputMask id="nomID" value="#{cliMB.client.nomClient}" />
+
+				<p:outputLabel for="adresseID" value="Adresse :" />
+				<p:inputMask id="adresseID" value="#{cliMB.client.adresse}" />
+
+				<p:outputLabel for="emailID" value="Email:" />
+				<p:inputMask id="emailID" value="#{cliMB.client.email}" />
+
+				
+				<p:outputLabel for="telID" value="Téléphone:" />
+				<p:inputMask id="telID" value="#{cliMB.client.tel}" />
+
+				<p:commandButton value="Enregistrer la commande" type="submit"
+					action="#{cliMB.enregistrement}" icon="ui-icon-disk" update="@all" />
+			</h:panelGrid>
+
+
+
+
+			<h4 style="color: red; text-align: center">
+				<h:messages></h:messages>
+			</h4>
+		</h:form>
 
 
 		<h:messages style="color:red"></h:messages>

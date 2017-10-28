@@ -42,6 +42,7 @@ public class ClientManagedBean implements Serializable {
 
 	private Produit produitDemande;
 	private int nombreCommande;
+	private double prixTot ; 
 	private String mot ; 
 	private Administrateur admin;
 	private HttpSession maSession;
@@ -105,6 +106,14 @@ public class ClientManagedBean implements Serializable {
 	
 	
 	
+	public double getPrixTot() {
+		return prixTot;
+	}
+
+	public void setPrixTot(double prixTot) {
+		this.prixTot = prixTot;
+	}
+
 	public Categorie getCategorie() {
 		return categorie;
 	}
@@ -165,6 +174,15 @@ public class ClientManagedBean implements Serializable {
 		this.ligneCommande = ligneCommande;
 	}
 
+	
+	public List<Produit> getListeProduitsByMot() {
+		return listeProduitsByMot;
+	}
+
+	public void setListeProduitsByMot(List<Produit> listeProduitsByMot) {
+		this.listeProduitsByMot = listeProduitsByMot;
+	}
+	
 	// les methodes
 	public String instancierPanierDansSession(){
 		// On créer un panier
@@ -312,12 +330,27 @@ public class ClientManagedBean implements Serializable {
 		this.listeProduitsByMot = listeChercher;	
 		return "rechProdByMot";
 	}
+	
+	
+	public String enregistrement(){
+		Client cli_enr = cliService.enregitrementClient(this.client) ; 
+		
+		this.client = cli_enr ; 
+		
+		Panier panier =(Panier) maSession.getAttribute("panierSession");
+		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
+		
+		double prix = 0 ; 
+		
+		for (int i = 0; i < listeCommande.size(); i++) {
+			prix = prix + listeCommande.get(i).getPrix() ; 		
+		} 
+		
+		maSession.setAttribute("panierSession", panier);
 
-	public List<Produit> getListeProduitsByMot() {
-		return listeProduitsByMot;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le client a bien été enregistré"));
+
+		return "enregistrementclient";
 	}
 
-	public void setListeProduitsByMot(List<Produit> listeProduitsByMot) {
-		this.listeProduitsByMot = listeProduitsByMot;
-	}
 }
