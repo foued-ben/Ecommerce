@@ -2,6 +2,7 @@ package fr.adaming.managedBean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import fr.adaming.modele.Administrateur;
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
+import fr.adaming.modele.Commande;
 import fr.adaming.modele.LigneCommande;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
@@ -249,7 +251,7 @@ public class ClientManagedBean implements Serializable {
 		}
 	}
 
-	public String ajouterPanier() {
+	public void ajouterPanier() {
 		// On récupère le panier de la session
 		Panier panier = (Panier) maSession.getAttribute("panierSession");
 		System.out.println(panier);
@@ -259,9 +261,9 @@ public class ClientManagedBean implements Serializable {
 		System.out.println(listeCommande);
 		// On récupère le produit demandé.
 		Produit produitCherche = produitService.getProduit(this.produitDemande);
-		
+
 		// On vérifie qu'une quantité suffisante de produit est en stock
-		if (nombreCommande <= produitCherche.getQuantite() && nombreCommande>0) {
+		if (nombreCommande <= produitCherche.getQuantite() && nombreCommande > 0) {
 			System.out.println("Stock suffisant");
 			// On ajoute le produit à la ligne de commande
 			this.ligneCommande.setProduit(produitCherche);
@@ -284,7 +286,7 @@ public class ClientManagedBean implements Serializable {
 					new FacesMessage("Le produit a bien été ajouté au panier"));
 
 		} else if (nombreCommande <= 0) {
-				System.out.println("Veuiller commander un nombre positif d'objets ");
+			System.out.println("Veuiller commander un nombre positif d'objets ");
 		} else {
 			System.out.println("Stock insuffisant");
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -292,7 +294,7 @@ public class ClientManagedBean implements Serializable {
 
 		}
 
-		return "produitclient";
+		// return "produitclient";
 	}
 
 	public String supprProdPanier() {
@@ -301,23 +303,8 @@ public class ClientManagedBean implements Serializable {
 		System.out.println(panier);
 		// On récupère la liste des commandes déjà effectuée
 		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
-		System.out.println("La liste");
-		System.out.println(listeCommande);
 
-		// LigneCommande ligneCommOut = new LigneCommande() ;
-		// // int index = 0;
-		// for (int i = 0; i < listeCommande.size(); i++) {
-		// if (listeCommande.get(i).getPrix() == this.ligneCommande.getPrix() &&
-		// listeCommande.get(i).getQuantite() ==
-		// this.ligneCommande.getQuantite() ) {
-		// ligneCommOut = listeCommande.get(i);
-		// //index = i ;
-		// System.out.println("-----------------------------PRODUIT TROUVE
-		// ------------------------");
-		// }
-		// }
-
-		// On ajoute la ligne de commande à la liste des commandes.
+		// On supprime la ligne de commande à la liste des commandes.
 		listeCommande.remove(this.ligneCommande);
 		System.out.println(listeCommande);
 
@@ -356,14 +343,101 @@ public class ClientManagedBean implements Serializable {
 		}
 
 		this.prixTot = prix;
-		// for (int i = 0; i < listeCommande.size(); i++) {
-		// prix = prix + listeCommande.get(i).getPrix() ;
-		// }
 
-		maSession.setAttribute("panierSession", panier);
+		// maSession.setAttribute("panierSession", panier);
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le client a bien été enregistré"));
 
+		// Ajout de la commmande à la base de données. La commande est composée
+		// de la liste des commandes (identique à celle du panier)
+		// d'une date et d'un client.
+		Date dateCommande = new Date();
+		Commande commandeTemp = new Commande(dateCommande);
+
+		// On ajoute le client et la liste des commandes à commandeTemp.
+		commandeTemp.setListeLigneCommande(listeCommande);
+		commandeTemp.setClient(cli_enr);
+		// On enregistre la commande dans la base
+		cliService.enregistrementCommabde(commandeTemp);
+		System.out.println(commandeTemp);
+		
+		// Gestion du stock.
+		for(LigneCommande ligne : listeCommande ){
+			// on récupère le produit commandé
+			Produit produitTemp = ligne.getProduit();
+			System.out.println(produitTemp);
+			// On change la quantité de chaque produit 
+			int nouveauStock = produitTemp.getQuantite()-ligne.getQuantite();
+			produitTemp.setQuantite(nouveauStock);
+			// Le produit avec le nouveau stocke est utilisé pour modifié la valeur dans la table.
+			produitService.updateProduit(produitTemp);
+			System.out.println(produitTemp);
+		}
+		
+		
+		// Le panier doit être vidé.
+		Panier nouveauPanier = new Panier();
+		List<LigneCommande> nouvellelisteCommande = new ArrayList<>();
+		nouveauPanier.setListeLignesCommande(nouvellelisteCommande);
+		// Le panier vide est ajouté dans la session et remplace l'ancien panier. Une nouvelle commande devra être refaite de A à Z.
+
+		maSession.setAttribute("panierSession", nouveauPanier);
+		return "enregistrementclient";
+		
+
+	}
+
+	public String nouvelleCommande() {
+
+		// On récupère le client portant l'id donné
+		Client clientTemp = cliService.recuperClient(this.client);
+		this.client = clientTemp;
+		// On récupère la liste des commandes
+		Panier panier = (Panier) maSession.getAttribute("panierSession");
+		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
+
+		// Calcul du prix 
+		double prix = 0;
+
+		for (LigneCommande commande : listeCommande) {
+			System.out.println(commande.getPrix());
+			prix = prix + commande.getPrix();
+		}
+
+		this.prixTot = prix;
+
+		// On créer la commande avec une date
+		Date dateCommande = new Date();
+		Commande commandeTemp = new Commande(dateCommande);
+		
+		// On lui ajoute le contenu du panier et le client
+		// On ajoute le client et la liste des commandes à commandeTemp.
+		commandeTemp.setListeLigneCommande(listeCommande);
+		commandeTemp.setClient(this.client);
+		// On enregistre la commande dans la base
+		cliService.enregistrementCommabde(commandeTemp);
+
+		
+		// Gestion du stock.
+		for(LigneCommande ligne : listeCommande ){
+			// on récupère le produit commandé
+			Produit produitTemp = ligne.getProduit();
+			System.out.println(produitTemp);
+			// On change la quantité de chaque produit 
+			int nouveauStock = produitTemp.getQuantite()-ligne.getQuantite();
+			produitTemp.setQuantite(nouveauStock);
+			// Le produit avec le nouveau stocke est utilisé pour modifié la valeur dans la table.
+			produitService.updateProduit(produitTemp);
+			System.out.println(produitTemp);
+		}
+		
+		// Le panier doit être vidé.
+		Panier nouveauPanier = new Panier();
+		List<LigneCommande> nouvellelisteCommande = new ArrayList<>();
+		nouveauPanier.setListeLignesCommande(nouvellelisteCommande);
+		// Le panier vide est ajouté dans la session et remplace l'ancien panier. Une nouvelle commande devra être refaite de A à Z.
+
+		maSession.setAttribute("panierSession", nouveauPanier);
 		return "enregistrementclient";
 	}
 

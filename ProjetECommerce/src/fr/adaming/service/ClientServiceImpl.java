@@ -9,6 +9,7 @@ import fr.adaming.dao.ClientDaoImpl;
 import fr.adaming.dao.IClientDao;
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
+import fr.adaming.modele.Commande;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
@@ -61,6 +62,18 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public List<Produit> getAllProduits() {
 		return cliDao.getAllProduits();
+	}
+
+	@Override
+	public Commande enregistrementCommabde(Commande commande) {
+		// TODO Auto-generated method stub
+		return cliDao.enregistrementCommabde(commande);
+	}
+
+	@Override
+	public Client recuperClient(Client c) {
+		// TODO Auto-generated method stub
+		return cliDao.recuperClient(c);
 	}
 
 }

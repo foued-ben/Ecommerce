@@ -34,8 +34,9 @@
 	<h:form>
 				Rechercher un produit :<h:inputText value="#{cliMB.mot}" />
 
-		<p:commandButton value="Lancer la recherche" action="#{cliMB.rechProdByName}"
-			styleClass="ui-priority-primary" update="@all">
+		<p:commandButton value="Lancer la recherche"
+			action="#{cliMB.rechProdByName}" styleClass="ui-priority-primary"
+			update="@all">
 
 		</p:commandButton>
 	</h:form>
@@ -65,7 +66,8 @@
 
 		<p:column headerText="Commander">
 			<h:form>
-				Nombre :<h:inputText value="#{cliMB.nombreCommande}" />
+				Nombre :<h:inputText value="#{cliMB.nombreCommande}">
+				</h:inputText>
 
 				<p:commandButton value="Commander" action="#{cliMB.ajouterPanier}"
 					styleClass="ui-priority-primary">
@@ -79,7 +81,10 @@
 
 
 	</p:dataTable>
-	<p:growl id="message"></p:growl>
+	<h4 style="color: red; text-align: center">
+		<h:messages></h:messages>
+	</h4>
+	<p:growl></p:growl>
 
 	<p:spacer height="100px" />
 	<p:separator />

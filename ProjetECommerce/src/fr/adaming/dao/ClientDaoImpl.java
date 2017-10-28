@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
+import fr.adaming.modele.Commande;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
@@ -100,5 +101,23 @@ public class ClientDaoImpl implements IClientDao {
 		em.persist(c);
 		return c;
 	}
+
+	@Override
+	public Commande enregistrementCommabde(Commande commande) {
+		em.persist(commande);
+		return commande;
+	}
+
+	@Override
+	public Client recuperClient(Client c) {
+		String req ="SELECT client from Client client WHERE client.idClient=:pIDClient";
+		Query query= em.createQuery(req);
+		System.out.println("requête créée");
+		query.setParameter("pIDClient",c.getIdClient());
+		Client clientChercher = (Client) query.getSingleResult();
+
+		return clientChercher;
+	}
+	
 
 }

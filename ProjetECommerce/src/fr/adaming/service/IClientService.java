@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import fr.adaming.modele.Categorie;
 import fr.adaming.modele.Client;
+import fr.adaming.modele.Commande;
 import fr.adaming.modele.Panier;
 import fr.adaming.modele.Produit;
 
@@ -20,4 +21,6 @@ public interface IClientService {
 	public Produit addProduitPanier(Produit p, int quantite, Panier pan) ;
 	public int deleteProduitPanier(Produit p, Panier pan) ; 
 	public Client enregitrementClient(Client c) ;
+	public Commande enregistrementCommabde(Commande commande);
+	public Client recuperClient(Client c);
 }
