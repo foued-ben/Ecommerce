@@ -1,0 +1,36 @@
+#parent {
+    position: relative;
+}
+img.superpose {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+}
+#img_1 {
+    z-index: 10;
+    left : 860px ; 
+    bottom: 0px ; 
+    top : 260px
+}
+#img_2 {
+    z-index: 11;
+}
+
+
+.container {
+    position: relative; 
+
+
+}
+
+.container .caption {
+    position: absolute;
+    bottom: 70px;
+    left: 450px;
+}
+
+.container .captionlog {
+    position: absolute;
+    bottom: 20px;
+    left: 400px;
+}
