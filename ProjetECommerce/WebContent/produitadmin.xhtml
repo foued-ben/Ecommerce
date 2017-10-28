@@ -12,13 +12,20 @@
 
 <h:body>
 
-<p:stack icon="/images/stack.png" expanded="true"	>
-    <p:menuitem value="Accueil" icon="/images/PC.png" url="accueiladmin.xhtml"/>
-    <p:menuitem value="Produits" icon="/images/BoiteCarton.png" url="produitadmin.xhtml"/>
-    <p:menuitem value="Catégories" icon="/images/dossier.png" url="categorieadmin.xhtml"/>
-    <p:menuitem value="Recherche" icon="/images/Loupe.png" url="rechercheadmin.xhtml"/>
-    
-</p:stack>
+
+<h:form>
+	<p:stack icon="/images/stack.png" expanded="true">
+		<p:menuitem value="Accueil" icon="/images/PC.png"
+			url="accueiladmin.xhtml" />
+		<p:menuitem value="Produits" icon="/images/BoiteCarton.png"
+			url="produitadmin.xhtml" />
+		<p:menuitem value="Catégories" icon="/images/dossier.png"
+			url="categorieadmin.xhtml" />
+		<p:menuitem value="Recherche" icon="/images/Loupe.png"
+			url="rechercheadmin.xhtml" />
+
+	</p:stack>
+</h:form>
 
 	<h1>Ajout de produit</h1>
 
@@ -35,6 +42,7 @@
 
 	</h:form>
 
+<p:separator />
 
 	<h1>Suppression de produit</h1>
 
@@ -50,6 +58,7 @@
 	
 	</h:form>
 
+<p:separator />
 
 
 	<h1>Modification d'un produit</h1>

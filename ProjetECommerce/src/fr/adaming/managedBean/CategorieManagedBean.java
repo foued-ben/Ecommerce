@@ -71,7 +71,7 @@ public class CategorieManagedBean {
 			System.out.println("Ajoutée");
 			return "accueiladmin";
 		} else {
-			return "ajoutcategorie";
+			return "categorieadmin";
 		}
 	}
 
@@ -96,7 +96,7 @@ public class CategorieManagedBean {
 			return "suppressioncategorie";
 		}
 		System.out.println("Rien d'ajouté");
-		return "suppressioncategorie";
+		return "categorieadmin";
 
 	}
 
@@ -111,7 +111,7 @@ public class CategorieManagedBean {
 			return "accueiladmin";
 		} else {
 			System.out.println("Modification non effectuée");
-			return "accueiladmin";
+			return "categorieadmin";
 		}
 	}
 
