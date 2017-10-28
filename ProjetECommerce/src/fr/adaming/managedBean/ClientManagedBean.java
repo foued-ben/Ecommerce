@@ -327,7 +327,12 @@ public class ClientManagedBean implements Serializable {
 	
 	public String rechProdByName(){
 		List<Produit> listeChercher = cliService.getProduitsByMot(this.mot);
-		this.listeProduitsByMot = listeChercher;	
+		System.out.println(listeChercher);
+	//	this.produitDemande.setDesignation(mot);
+	//	List<Produit> listeChercher2 = produitService.getProduitByName(this.produitDemande);
+	//	System.out.println();
+		//this.listeProduitsByMot = listeChercher;	
+		maSession.setAttribute("listeProduitsByMot", listeChercher);
 		return "rechProdByMot";
 	}
 	

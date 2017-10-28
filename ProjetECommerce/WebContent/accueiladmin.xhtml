@@ -8,6 +8,8 @@
 
 <h:head>
 	<title>Accueil</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	
 </h:head>
 
 <h:body>
@@ -15,8 +17,8 @@
 		<h:commandButton value="Se déconnecter" action="#{aMB.seDeconnecter}" />
 	</h:form>
 
+<h:commandButton  styleClass="ui-icon-test"/>
 
-	
 	
 <p:stack icon="/images/stack.png" expanded="true"	>
     <p:menuitem value="Accueil" icon="/images/PC.png" url="accueiladmin.xhtml"/>
