@@ -75,7 +75,7 @@ public class ProduitManagedBean {
 			return "accueiladmin"; 
 		}else{
 			System.out.println("Ajout non effectué");
-			return "ajoutproduit";
+			return "produitadmin";
 		}
 	}
 	
@@ -89,7 +89,7 @@ public class ProduitManagedBean {
 			return "accueiladmin";
 		}else{
 			System.out.println("Suppression non effectuée");
-			return "suppressionproduit";
+			return "produitadmin";
 		}
 	}
 	
@@ -103,7 +103,7 @@ public class ProduitManagedBean {
 			return "accueiladmin";
 		}else{
 			System.out.println("Modification non effectuée");
-			return "updateproduit";
+			return "produitadmin";
 		}
 	}
 	

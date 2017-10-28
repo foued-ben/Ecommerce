@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Accueil</title>
+</h:head>
+
+<h:body>
+
+
+<p:stack icon="/images/stack.png" expanded="true"	>
+    <p:menuitem value="Accueil" icon="/images/PC.png" url="accueiladmin.xhtml"/>
+    <p:menuitem value="Produits" icon="/images/BoiteCarton.png" url="produitadmin.xhtml"/>
+    <p:menuitem value="Catégories" icon="/images/dossier.png" url="categorieadmin.xhtml"/>
+    <p:menuitem value="Recherche" icon="/images/Loupe.png" url="rechercheadmin.xhtml"/>
+    
+</p:stack>
+
+
+	<h1>Ajout d'une catégorie de produit</h1>
+
+	<h:form>
+	
+			<p:panelGrid columns="2">
+			Description de la catégorie: <p:inputText value="#{categorieMB.categorie.description}" />
+
+			Nom de la catégorie: <p:inputText value="#{categorieMB.categorie.nomCategorie}" />
+			
+			
+
+			<p:commandButton value="Ajouter la catégorie" action="#{categorieMB.ajouterCategorie}" />
+		</p:panelGrid>
+	
+	
+	</h:form>
+
+
+	<h1> Supprimer une catégorie</h1>
+	<h:form>
+		<p:panelGrid columns="2">
+			ID de la catégorie : <p:inputText value ="#{categorieMB.categorie.idCategorie}"/>
+			<p:commandButton value="Supprimer la catégorie" action ="#{categorieMB.supprimerCategorie}" update=":message"/>
+		</p:panelGrid>
+		
+	</h:form>
+		<p:growl id="message"></p:growl>
+
+	<h1>Mettre à jour une catégorie</h1>
+
+<h:form>
+	
+				ID de la catégorie": <p:inputText
+			value="#{categorieMB.categorie.idCategorie}" />
+
+		<p:panelGrid columns="2">
+			Description de la catégorie: <p:inputText
+				value="#{categorieMB.categorie.description}" />
+
+			Nom de la catégorie: <p:inputText
+				value="#{categorieMB.categorie.nomCategorie}" />
+			<h:commandButton value="Modifier" action="#{categorieMB.modifierCategorie}" />
+				
+		</p:panelGrid>
+
+
+	</h:form>
+
+
+</h:body>
+
+
+
+</html>
