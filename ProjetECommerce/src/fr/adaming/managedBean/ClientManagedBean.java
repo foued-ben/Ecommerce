@@ -141,6 +141,15 @@ public class ClientManagedBean implements Serializable {
 		this.id = id;
 	}
 
+	
+
+	public LigneCommande getLigneCommande() {
+		return ligneCommande;
+	}
+
+	public void setLigneCommande(LigneCommande ligneCommande) {
+		this.ligneCommande = ligneCommande;
+	}
 
 	// les methodes
 	public String instancierPanierDansSession(){
@@ -247,7 +256,39 @@ public class ClientManagedBean implements Serializable {
 		panier.setListeLignesCommande(listeCommande);
 		// On ajoute le panier à la session
 		maSession.setAttribute("panierSession", panier);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le produit a bien été ajouté au panier"));
+
 		
 	}
 	
+	
+	public String supprProdPanier(){
+		//On récupère le panier de la session
+		Panier panier =(Panier) maSession.getAttribute("panierSession");
+		System.out.println(panier);
+		// On récupère la liste des commandes déjà effectuée
+		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
+		System.out.println("La liste");
+		System.out.println(listeCommande);
+	
+//	LigneCommande ligneCommOut = new LigneCommande() ;  
+//	//	int index = 0; 
+//		for (int i = 0; i < listeCommande.size(); i++) {
+//			if (listeCommande.get(i).getPrix() == this.ligneCommande.getPrix() && listeCommande.get(i).getQuantite() == this.ligneCommande.getQuantite() ) {
+//				ligneCommOut = listeCommande.get(i); 
+//				//index = i ; 
+//				System.out.println("-----------------------------PRODUIT TROUVE ------------------------");
+//			}			
+//		} 
+		
+		//On ajoute la ligne de commande à la liste des commandes.
+		listeCommande.remove(this.ligneCommande);
+		System.out.println(listeCommande);
+		
+		// On ajoute la liste dans le panier.
+		panier.setListeLignesCommande(listeCommande);
+		// On ajoute le panier à la session
+		maSession.setAttribute("panierSession", panier);
+		return "panierclient";
+	}
 }

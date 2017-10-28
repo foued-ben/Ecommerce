@@ -26,7 +26,7 @@
 
 
 
-<h1 style="color: gold; text-align: center">Liste des Catégories</h1>
+<h1 style="color: gold; text-align: center">Liste des produit de mon panier</h1>
 
 	<p:dataTable var="ligneCommande" value="#{sessionScope.panierSession.listeLignesCommande}" id="listePanier">
 		
@@ -42,11 +42,24 @@
 			<h:outputText value="#{ligneCommande.produit.designation}" />
 		</p:column>
 		
+		<p:column headerText="Supprimer des produits">
+			<h:form>
+			 <p:commandButton type="submit" value="Supprimer le produit du panier" action="#{cliMB.supprProdPanier}"  styleClass="ui-priority-primary" update="@all">
+			 	<f:setPropertyActionListener value="#{ligneCommande}" target="#{cliMB.ligneCommande}"></f:setPropertyActionListener>
+<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.quantite}" target="#{cliMB.ligneCommande.quantite}"></f:setPropertyActionListener>	 	 -->
+<!-- 			 	<f:setPropertyActionListener value="#{ligneCommande.produit.designation}" target="#{cliMB.ligneCommande.produit.designation}"></f:setPropertyActionListener>	 				 -->
+			 </p:commandButton>
+			</h:form>
+		</p:column>
+		
 		
 	</p:dataTable>
 
 	<p:spacer height="100px" />
 	<p:separator />
+
+	
+
 
 		<h:messages style="color:red"></h:messages>
 </h:body>
