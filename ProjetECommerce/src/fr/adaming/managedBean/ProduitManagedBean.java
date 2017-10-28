@@ -63,6 +63,7 @@ public class ProduitManagedBean {
 
 	// Méthodes Propres.
 	public String ajouterProduit(){
+		// On créer une catégorie vide, on lui associe l'id récupéré puis on associe cette catégorie au produit.
 		Categorie catTemp =new Categorie();
 		catTemp.setIdCategorie(idCategorie);
 		this.produit.setCategorie(catTemp);
