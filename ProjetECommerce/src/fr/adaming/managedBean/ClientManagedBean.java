@@ -33,17 +33,17 @@ public class ClientManagedBean implements Serializable {
 	ICategorieService catService;
 	@EJB
 	IProduitService produitService;
-	
+
 	private Client client;
-	private Categorie categorie ; 
+	private Categorie categorie;
 	private List<Categorie> listeCategories;
-	private List<Produit> listeProduits ;
-	private List<Produit> listeProduitsByMot ;
+	private List<Produit> listeProduits;
+	private List<Produit> listeProduitsByMot;
 
 	private Produit produitDemande;
 	private int nombreCommande;
-	private double prixTot ; 
-	private String mot ; 
+	private double prixTot;
+	private String mot;
 	private Administrateur admin;
 	private HttpSession maSession;
 	private LigneCommande ligneCommande;
@@ -53,11 +53,11 @@ public class ClientManagedBean implements Serializable {
 	public ClientManagedBean() {
 		// instancier le client pour éviter l'exception target unreachble
 		this.client = new Client();
-		this.categorie = new Categorie() ; 
+		this.categorie = new Categorie();
 		this.produitDemande = new Produit();
 		this.listeCategories = new ArrayList<Categorie>();
-		this.listeProduits = new ArrayList<Produit>() ; 
-		this.listeProduitsByMot = new ArrayList<Produit>() ; 
+		this.listeProduits = new ArrayList<Produit>();
+		this.listeProduitsByMot = new ArrayList<Produit>();
 
 		this.ligneCommande = new LigneCommande();
 	}
@@ -73,10 +73,10 @@ public class ClientManagedBean implements Serializable {
 
 		// recuperation e l'agent à partir de la session
 		this.admin = (Administrateur) maSession.getAttribute("adminSession");
-		
-		this.listeCategories=cliService.getAllCategories();
+
+		this.listeCategories = cliService.getAllCategories();
 		this.listeProduits = cliService.getAllProduits();
-		//this.listeProduits = new ArrayList<>();
+		// this.listeProduits = new ArrayList<>();
 	}
 
 	public Client getClient() {
@@ -103,9 +103,6 @@ public class ClientManagedBean implements Serializable {
 		this.listeCategories = listeCategories;
 	}
 
-	
-	
-	
 	public double getPrixTot() {
 		return prixTot;
 	}
@@ -129,7 +126,7 @@ public class ClientManagedBean implements Serializable {
 	public void setListeProduits(List<Produit> listeProduits) {
 		this.listeProduits = listeProduits;
 	}
-	
+
 	public Produit getProduitDemande() {
 		return produitDemande;
 	}
@@ -138,7 +135,6 @@ public class ClientManagedBean implements Serializable {
 		this.produitDemande = produitDemande;
 	}
 
-	
 	public int getNombreCommande() {
 		return nombreCommande;
 	}
@@ -154,9 +150,6 @@ public class ClientManagedBean implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-	
 
 	public String getMot() {
 		return mot;
@@ -174,7 +167,6 @@ public class ClientManagedBean implements Serializable {
 		this.ligneCommande = ligneCommande;
 	}
 
-	
 	public List<Produit> getListeProduitsByMot() {
 		return listeProduitsByMot;
 	}
@@ -182,11 +174,11 @@ public class ClientManagedBean implements Serializable {
 	public void setListeProduitsByMot(List<Produit> listeProduitsByMot) {
 		this.listeProduitsByMot = listeProduitsByMot;
 	}
-	
+
 	// les methodes
-	public String instancierPanierDansSession(){
+	public String instancierPanierDansSession() {
 		// On créer un panier
-		Panier panierSession =new Panier();
+		Panier panierSession = new Panier();
 		// On créer une liste de ligne de commande
 		System.out.println("Création de la liste");
 		List<LigneCommande> listeCommande = new ArrayList<>();
@@ -197,19 +189,17 @@ public class ClientManagedBean implements Serializable {
 		// Ajouter le panier à la session
 		maSession.setAttribute("panierSession", panierSession);
 		System.out.println("Panier ajouté");
-		
+
 		// On créer la liste de produit contenant tous les produits.
 		List<Produit> listeTousProduits = produitService.getAllProduits();
 		// On ajoute la liste à la session
 		this.listeProduits = listeTousProduits;
 		maSession.setAttribute("listeProduits", listeProduits);
-		System.out.println("La liste des produits est"+listeProduits);
+		System.out.println("La liste des produits est" + listeProduits);
 
 		return "accueilclient";
 	}
-	
-	
-	
+
 	public String afficherCategories() {
 
 		List<Categorie> listeOut = cliService.getAllCategories();
@@ -217,7 +207,7 @@ public class ClientManagedBean implements Serializable {
 		if (listeOut != null) {
 			this.listeCategories = listeOut;
 
-			 maSession.setAttribute("categoriesListe", listeCategories);
+			maSession.setAttribute("categoriesListe", listeCategories);
 
 			return "categorie";
 		} else {
@@ -226,7 +216,6 @@ public class ClientManagedBean implements Serializable {
 		}
 	}
 
-	
 	public String afficherProduits() {
 
 		List<Produit> listeOut = cliService.getAllProduitByCategorie(this.categorie);
@@ -241,18 +230,17 @@ public class ClientManagedBean implements Serializable {
 			return "accueilclient";
 		}
 	}
-	
+
 	public String afficherProduitsByCat() {
 
-		
 		List<Produit> listeOut = cliService.getAllProduitByCategorie(this.categorie);
-		
+
 		System.out.println(listeOut);
 		if (listeOut != null) {
 			// maSession.setAttribute("categoriesListe", listeCategories);
 			this.listeProduits = listeOut;
 			maSession.setAttribute("listeProduits", listeProduits);
-			System.out.println("La liste des produits est"+listeProduits);
+			System.out.println("La liste des produits est" + listeProduits);
 
 			return "produitclient";
 		} else {
@@ -260,97 +248,118 @@ public class ClientManagedBean implements Serializable {
 			return "accueilclient";
 		}
 	}
-	
-	public void ajouterPanier(){
-		//On récupère le panier de la session
-		Panier panier =(Panier) maSession.getAttribute("panierSession");
+
+	public String ajouterPanier() {
+		// On récupère le panier de la session
+		Panier panier = (Panier) maSession.getAttribute("panierSession");
 		System.out.println(panier);
 		// On récupère la liste des commandes déjà effectuée
 		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
 		System.out.println("La liste");
 		System.out.println(listeCommande);
 		// On récupère le produit demandé.
-		Produit produitCherche= produitService.getProduit(this.produitDemande);
-		// On ajoute le produit à la ligne de commande
-		this.ligneCommande.setProduit(produitCherche);
-		// On ajoute le nombre d'objet commande à la ligne de commande
-		this.ligneCommande.setQuantite(nombreCommande);
-		// On calcule le prix. 
-		double prixLigne = nombreCommande*produitCherche.getPrix();
-		// On ajoute le prix dans la ligne de commande.
-		ligneCommande.setPrix(prixLigne);
+		Produit produitCherche = produitService.getProduit(this.produitDemande);
 		
-		//On ajoute la ligne de commande à la liste des commandes.
-		listeCommande.add(ligneCommande);
-		System.out.println(listeCommande);
-		
-		// On ajoute la liste dans le panier.
-		panier.setListeLignesCommande(listeCommande);
-		// On ajoute le panier à la session
-		maSession.setAttribute("panierSession", panier);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le produit a bien été ajouté au panier"));
+		// On vérifie qu'une quantité suffisante de produit est en stock
+		if (nombreCommande <= produitCherche.getQuantite() && nombreCommande>0) {
+			System.out.println("Stock suffisant");
+			// On ajoute le produit à la ligne de commande
+			this.ligneCommande.setProduit(produitCherche);
+			// On ajoute le nombre d'objet commande à la ligne de commande
+			this.ligneCommande.setQuantite(nombreCommande);
+			// On calcule le prix.
+			double prixLigne = nombreCommande * produitCherche.getPrix();
+			// On ajoute le prix dans la ligne de commande.
+			ligneCommande.setPrix(prixLigne);
 
-		
+			// On ajoute la ligne de commande à la liste des commandes.
+			listeCommande.add(ligneCommande);
+			System.out.println(listeCommande);
+
+			// On ajoute la liste dans le panier.
+			panier.setListeLignesCommande(listeCommande);
+			// On ajoute le panier à la session
+			maSession.setAttribute("panierSession", panier);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Le produit a bien été ajouté au panier"));
+
+		} else if (nombreCommande <= 0) {
+				System.out.println("Veuiller commander un nombre positif d'objets ");
+		} else {
+			System.out.println("Stock insuffisant");
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Cher client nos stocks sont insuffisants"));
+
+		}
+
+		return "produitclient";
 	}
-	
-	
-	public String supprProdPanier(){
-		//On récupère le panier de la session
-		Panier panier =(Panier) maSession.getAttribute("panierSession");
+
+	public String supprProdPanier() {
+		// On récupère le panier de la session
+		Panier panier = (Panier) maSession.getAttribute("panierSession");
 		System.out.println(panier);
 		// On récupère la liste des commandes déjà effectuée
 		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
 		System.out.println("La liste");
 		System.out.println(listeCommande);
-	
-//	LigneCommande ligneCommOut = new LigneCommande() ;  
-//	//	int index = 0; 
-//		for (int i = 0; i < listeCommande.size(); i++) {
-//			if (listeCommande.get(i).getPrix() == this.ligneCommande.getPrix() && listeCommande.get(i).getQuantite() == this.ligneCommande.getQuantite() ) {
-//				ligneCommOut = listeCommande.get(i); 
-//				//index = i ; 
-//				System.out.println("-----------------------------PRODUIT TROUVE ------------------------");
-//			}			
-//		} 
-		
-		//On ajoute la ligne de commande à la liste des commandes.
+
+		// LigneCommande ligneCommOut = new LigneCommande() ;
+		// // int index = 0;
+		// for (int i = 0; i < listeCommande.size(); i++) {
+		// if (listeCommande.get(i).getPrix() == this.ligneCommande.getPrix() &&
+		// listeCommande.get(i).getQuantite() ==
+		// this.ligneCommande.getQuantite() ) {
+		// ligneCommOut = listeCommande.get(i);
+		// //index = i ;
+		// System.out.println("-----------------------------PRODUIT TROUVE
+		// ------------------------");
+		// }
+		// }
+
+		// On ajoute la ligne de commande à la liste des commandes.
 		listeCommande.remove(this.ligneCommande);
 		System.out.println(listeCommande);
-		
+
 		// On ajoute la liste dans le panier.
 		panier.setListeLignesCommande(listeCommande);
 		// On ajoute le panier à la session
 		maSession.setAttribute("panierSession", panier);
 		return "panierclient";
 	}
-	
-	
-	public String rechProdByName(){
+
+	public String rechProdByName() {
 		List<Produit> listeChercher = cliService.getProduitsByMot(this.mot);
 		System.out.println(listeChercher);
-	//	this.produitDemande.setDesignation(mot);
-	//	List<Produit> listeChercher2 = produitService.getProduitByName(this.produitDemande);
-	//	System.out.println();
-		//this.listeProduitsByMot = listeChercher;	
+		// this.produitDemande.setDesignation(mot);
+		// List<Produit> listeChercher2 =
+		// produitService.getProduitByName(this.produitDemande);
+		// System.out.println();
+		// this.listeProduitsByMot = listeChercher;
 		maSession.setAttribute("listeProduitsByMot", listeChercher);
 		return "rechProdByMot";
 	}
-	
-	
-	public String enregistrement(){
-		Client cli_enr = cliService.enregitrementClient(this.client) ; 
-		
-		this.client = cli_enr ; 
-		
-		Panier panier =(Panier) maSession.getAttribute("panierSession");
+
+	public String enregistrement() {
+		Client cli_enr = cliService.enregitrementClient(this.client);
+
+		this.client = cli_enr;
+		// On récupère la liste des commandes
+		Panier panier = (Panier) maSession.getAttribute("panierSession");
 		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
-		
-		double prix = 0 ; 
-		
-		for (int i = 0; i < listeCommande.size(); i++) {
-			prix = prix + listeCommande.get(i).getPrix() ; 		
-		} 
-		
+
+		double prix = 0;
+
+		for (LigneCommande commande : listeCommande) {
+			System.out.println(commande.getPrix());
+			prix = prix + commande.getPrix();
+		}
+
+		this.prixTot = prix;
+		// for (int i = 0; i < listeCommande.size(); i++) {
+		// prix = prix + listeCommande.get(i).getPrix() ;
+		// }
+
 		maSession.setAttribute("panierSession", panier);
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le client a bien été enregistré"));

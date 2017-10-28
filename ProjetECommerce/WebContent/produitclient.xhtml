@@ -70,7 +70,7 @@
 				<p:commandButton value="Commander" action="#{cliMB.ajouterPanier}"
 					styleClass="ui-priority-primary">
 					<f:setPropertyActionListener value="#{prod.idProduit}"
-						target="#{cliMB.produitDemande.idProduit}"></f:setPropertyActionListener>
+						target="#{cliMB.produitDemande.idProduit}" update=":message"></f:setPropertyActionListener>
 
 				</p:commandButton>
 			</h:form>
@@ -79,10 +79,9 @@
 
 
 	</p:dataTable>
+	<p:growl id="message"></p:growl>
 
 	<p:spacer height="100px" />
 	<p:separator />
-
-	<h:messages style="color:red"></h:messages>
 </h:body>
 </html>
