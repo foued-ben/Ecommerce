@@ -28,20 +28,12 @@
 
 
 
-	<h1 style="color: gold; text-align: center">Liste des Produits</h1>
+	<h1 style="color: gold; text-align: center">Résultats de la recherche</h1>
 
 
-	<h:form>
-				Rechercher un produit :<h:inputText value="#{cliMB.mot}" />
-
-		<p:commandButton value="Lancer la recherche" action="#{cliMB.rechProdByName}"
-			styleClass="ui-priority-primary" update=":listeProd">
-
-		</p:commandButton>
-	</h:form>
 
 
-	<p:dataTable var="prod" value="#{sessionScope.listeProduits}"
+	<p:dataTable var="prod" value="#{sessionScope.listeProduitsByMot}"
 		id="listeProd">
 		<p:column headerText="Id">
 			<h:outputText value="#{prod.idProduit}" />

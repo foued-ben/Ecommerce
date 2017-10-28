@@ -38,8 +38,7 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public List<Produit> getProduitsByMot(String mot) {
-		// TODO Auto-generated method stub
-		return null;
+		return cliDao.getProduitsByMot(mot) ; 
 	}
 
 	@Override

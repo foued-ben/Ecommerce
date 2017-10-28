@@ -68,8 +68,19 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public List<Produit> getProduitsByMot(String mot) {
-		// TODO Auto-generated method stub
-		return null;
+		String req = "SELECT prod FROM Produit prod WHERE prod.description LIKE :pDescription";
+		Query query = em.createQuery(req);
+		// Production du paramètre
+		StringBuilder intitule = new StringBuilder();
+		intitule.append(mot);
+		intitule.append('%');
+		String intituleParam = intitule.toString();
+		//Passage du paramètre
+		query.setParameter("pDescription", intituleParam);
+		@SuppressWarnings("unchecked")
+		List<Produit> liste = query.getResultList();
+		
+		return liste;
 	}
 
 	@Override
