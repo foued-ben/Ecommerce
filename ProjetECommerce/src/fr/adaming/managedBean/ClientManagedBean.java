@@ -38,8 +38,11 @@ public class ClientManagedBean implements Serializable {
 	private Categorie categorie ; 
 	private List<Categorie> listeCategories;
 	private List<Produit> listeProduits ;
+	private List<Produit> listeProduitsByMot ;
+
 	private Produit produitDemande;
 	private int nombreCommande;
+	private String mot ; 
 	private Administrateur admin;
 	private HttpSession maSession;
 	private LigneCommande ligneCommande;
@@ -53,6 +56,8 @@ public class ClientManagedBean implements Serializable {
 		this.produitDemande = new Produit();
 		this.listeCategories = new ArrayList<Categorie>();
 		this.listeProduits = new ArrayList<Produit>() ; 
+		this.listeProduitsByMot = new ArrayList<Produit>() ; 
+
 		this.ligneCommande = new LigneCommande();
 	}
 
@@ -142,6 +147,15 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	
+	
+
+	public String getMot() {
+		return mot;
+	}
+
+	public void setMot(String mot) {
+		this.mot = mot;
+	}
 
 	public LigneCommande getLigneCommande() {
 		return ligneCommande;
@@ -290,5 +304,20 @@ public class ClientManagedBean implements Serializable {
 		// On ajoute le panier à la session
 		maSession.setAttribute("panierSession", panier);
 		return "panierclient";
+	}
+	
+	
+	public String rechProdByName(){
+		List<Produit> listeChercher = cliService.getProduitsByMot(this.mot);
+		this.listeProduitsByMot = listeChercher;	
+		return "rechProdByMot";
+	}
+
+	public List<Produit> getListeProduitsByMot() {
+		return listeProduitsByMot;
+	}
+
+	public void setListeProduitsByMot(List<Produit> listeProduitsByMot) {
+		this.listeProduitsByMot = listeProduitsByMot;
 	}
 }
