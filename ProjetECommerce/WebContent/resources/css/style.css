@@ -4,16 +4,25 @@
 img.superpose {
     position: absolute;
     top: 25px;
+    left: 0px;
+}
+
+img.superposebis {
+    position: absolute;
+    top: 25px;
     left: 30px;
 }
 #img_1 {
     z-index: 10;
     left : 860px ; 
     bottom: 0px ; 
-    top : 260px
+    top : 200px;
 }
 #img_2 {
     z-index: 11;
+    left : 740px ; 
+    bottom: 160px ; 
+    top : 300px;
 }
 
 
@@ -25,8 +34,14 @@ img.superpose {
 
 .container .caption {
     position: absolute;
-    bottom: 70px;
-    left: 450px;
+    bottom: 400px;
+    left: 400px;
+}
+
+#click {
+    position: absolute;
+    bottom: 120px;
+    left: 400px;
 }
 
 .container .captionlog {
