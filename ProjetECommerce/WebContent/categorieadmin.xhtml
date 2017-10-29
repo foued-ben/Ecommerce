@@ -10,7 +10,7 @@
 	<title>Accueil</title>
 </h:head>
 
-<h:body>
+<h:body style="background-image : url(images/fond_nuit.jpg);">
 	<p:growl id="message"></p:growl>
 
 	<h:form>
@@ -32,14 +32,17 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Ajout d'une catégorie de produit</h1>
+			<div style="background-image: url(images/fond_nuit.jpg);">
 
+				<h1 style="text-align: center; position: relative; color: gold;">Ajout
+					d'une catégorie de produit</h1>
+			</div>
 			<p:panelGrid columns="2">
 			Description de la catégorie: <p:inputText
-					value="#{categorieMB.categorie.description}" />
+					value="#{categorieMB.categorie.description}" required="true"/>
 
 			Nom de la catégorie: <p:inputText
-					value="#{categorieMB.categorie.nomCategorie}" />
+					value="#{categorieMB.categorie.nomCategorie}" required="true"/>
 			</p:panelGrid>
 			<p:commandButton value="Ajouter la catégorie"
 				action="#{categorieMB.ajouterCategorie}" />
@@ -48,11 +51,14 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Supprimer une catégorie</h1>
+			<div style="background-image: url(images/fond_nuit.jpg);">
 
+				<h1 style="text-align: center; position: relative; color: gold;">Supprimer
+					une catégorie</h1>
+			</div>
 			<p:panelGrid columns="2">
 			ID de la catégorie : <p:inputText
-					value="#{categorieMB.categorie.idCategorie}" />
+					value="#{categorieMB.categorie.idCategorie}" required="true"/>
 			</p:panelGrid>
 			<p:commandButton value="Supprimer la catégorie"
 				action="#{categorieMB.supprimerCategorie}" update=":message" />
@@ -61,18 +67,21 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Modifier une catégorie de
-				produit</h1>
+			<div style="background-image: url(images/fond_nuit.jpg);">
+
+				<h1 style="text-align: center; position: relative; color: gold;">Modifier
+					une catégorie de produit</h1>
+			</div>
 			<p:panelGrid columns="2">
 		
 				ID de la catégorie": <p:inputText
-					value="#{categorieMB.categorie.idCategorie}" />
+					value="#{categorieMB.categorie.idCategorie}" required="true"/>
 
 			Description de la catégorie: <p:inputText
-					value="#{categorieMB.categorie.description}" />
+					value="#{categorieMB.categorie.description}" required="true"/>
 
 			Nom de la catégorie: <p:inputText
-					value="#{categorieMB.categorie.nomCategorie}" />
+					value="#{categorieMB.categorie.nomCategorie}" required="true"/>
 
 			</p:panelGrid>
 			<p:commandButton value="Modifier"

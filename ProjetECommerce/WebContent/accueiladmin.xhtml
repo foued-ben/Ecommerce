@@ -9,10 +9,11 @@
 <h:head>
 	<title>Accueil</title>
 	<h:outputStylesheet library="css" name="style.css" />
+   
 
 </h:head>
 
-<h:body>
+<h:body style="background-image : url(images/fond_nuit.jpg);">
 
 	<h:form>
 		<p:stack icon="/images/stack.png" expanded="true">
@@ -30,7 +31,7 @@
 	</h:form>
 
 
-	<h1 style="text-align: center; position: relative">Liste des
+	<h1 style="text-align: center; position: relative; color:gold">Liste des
 		catégories</h1>
 	<p:separator></p:separator>
 
@@ -50,7 +51,7 @@
 
 	</p:dataTable>
 
-	<h1 style="text-align: center;">Liste des produits</h1>
+	<h1 style="text-align: center;color:gold">Liste des produits</h1>
 	<p:separator></p:separator>
 
 	<p:dataTable var="produit" value="#{sessionScope.listeProduits}">

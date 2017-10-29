@@ -10,7 +10,7 @@
 	<title>Ajout Produit</title>
 </h:head>
 
-<h:body>
+<h:body style="background-image : url(images/fond_nuit.jpg);">
 	<h:form>
 		<p:stack icon="/images/stack.png" expanded="true">
 			<p:menuitem value="Accueil" icon="/images/PC.png"
@@ -30,15 +30,19 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Ajout de produit</h1>
+			<div style="background-image: url(images/fond_nuit.jpg);">
+
+				<h1 style="text-align: center;background-image : url(images/fond_nuit.jpg);color:gold">Ajout de produit</h1>
+
+			</div>
 
 			<p:panelGrid columns="2">
 	
-		Designation : <p:inputText value="#{produitMB.produit.designation}" />
-		Description : <p:inputText value="#{produitMB.produit.description}" />
-		Prix : <p:inputText value="#{produitMB.produit.prix}" />
-		Stock : <p:inputText value="#{produitMB.produit.quantite}" />
-		Catégorie (ID) : <p:inputText value="#{produitMB.idCategorie}" />
+		Designation : <p:inputText value="#{produitMB.produit.designation}" required="true"/>
+		Description : <p:inputText value="#{produitMB.produit.description}" required="true"/>
+		Prix : <p:inputText value="#{produitMB.produit.prix}" required="true"/>
+		Stock : <p:inputText value="#{produitMB.produit.quantite}" required="true"/>
+		Catégorie (ID) : <p:inputText value="#{produitMB.idCategorie}" required="true"/>
 			</p:panelGrid>
 			<p:commandButton value="Ajouter le produit"
 				action="#{produitMB.ajouterProduit}" />
@@ -48,10 +52,10 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Suppression de produit</h1>
 
+				<h1 style="text-align: center;background-image : url(images/fond_nuit.jpg);color:gold">Suppression de produit</h1>
 			<p:panelGrid columns="2">
-			ID du produit: <p:inputText value="#{produitMB.produit.idProduit}" />
+			ID du produit: <p:inputText value="#{produitMB.produit.idProduit}" required="true"/>
 
 			</p:panelGrid>
 			<p:commandButton value="Supprimer le produit"
@@ -65,22 +69,21 @@
 
 
 		<h:form>
-			<h1 style="text-align: center;">Modification d'un produit</h1>
-
+				<h1 style="text-align: center;background-image : url(images/fond_nuit.jpg);color:gold">Modification d'un produit</h1>
 			<p:panelGrid columns="2">
-					ID du produit": <p:inputText value="#{produitMB.produit.idProduit}" />
+					ID du produit": <p:inputText value="#{produitMB.produit.idProduit}" required="true"/>
 		
 					Désignation du produit: <p:inputText
-					value="#{produitMB.produit.designation}" />
+					value="#{produitMB.produit.designation}" required="true"/>
 		
 		
 			Description du produit: <p:inputText
-					value="#{produitMB.produit.description}" />
+					value="#{produitMB.produit.description}" required="true"/>
 				
-				Prix du produit <p:inputText value="#{produitMB.produit.prix}" />
+				Prix du produit <p:inputText value="#{produitMB.produit.prix}" required="true"/>
 				
 
-				Stock :<p:inputText value="#{produitMB.produit.quantite}" />
+				Stock :<p:inputText value="#{produitMB.produit.quantite}" required="true"/>
 
 
 			</p:panelGrid>
@@ -90,6 +93,8 @@
 
 		</h:form>
 	</p:panelGrid>
+	
+	<p:growl></p:growl>
 </h:body>
 
 
