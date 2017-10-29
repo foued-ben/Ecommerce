@@ -11,76 +11,75 @@
 </h:head>
 
 <h:body>
-
-<h:form>
-	<p:stack icon="/images/stack.png" expanded="true">
-		<p:menuitem value="Accueil" icon="/images/PC.png"
-			url="accueiladmin.xhtml" />
-		<p:menuitem value="Produits" icon="/images/BoiteCarton.png"
-			url="produitadmin.xhtml" />
-		<p:menuitem value="Catégories" icon="/images/dossier.png"
-			url="categorieadmin.xhtml" />
-		<p:menuitem value="Recherche" icon="/images/Loupe.png"
-			url="rechercheadmin.xhtml" />
-
-	</p:stack>
-</h:form>
-
-	<h1>Ajout d'une catégorie de produit</h1>
-
-	<h:form>
-
-		<p:panelGrid columns="2">
-			Description de la catégorie: <p:inputText
-				value="#{categorieMB.categorie.description}" />
-
-			Nom de la catégorie: <p:inputText
-				value="#{categorieMB.categorie.nomCategorie}" />
-
-
-
-			<p:commandButton value="Ajouter la catégorie"
-				action="#{categorieMB.ajouterCategorie}" />
-		</p:panelGrid>
-
-
-	</h:form>
-
-
-	<h1>Supprimer une catégorie</h1>
-	<h:form>
-		<p:panelGrid columns="2">
-			ID de la catégorie : <p:inputText
-				value="#{categorieMB.categorie.idCategorie}" />
-			<p:commandButton value="Supprimer la catégorie"
-				action="#{categorieMB.supprimerCategorie}" update=":message" />
-		</p:panelGrid>
-
-	</h:form>
 	<p:growl id="message"></p:growl>
 
-	<h1>Mettre à jour une catégorie</h1>
-
 	<h:form>
-	
-				ID de la catégorie": <p:inputText
-			value="#{categorieMB.categorie.idCategorie}" />
+		<p:stack icon="/images/stack.png" expanded="true">
+			<p:menuitem value="Accueil" icon="/images/PC.png"
+				url="accueiladmin.xhtml" />
+			<p:menuitem value="Produits" icon="/images/BoiteCarton.png"
+				url="produitadmin.xhtml" />
+			<p:menuitem value="Catégories" icon="/images/dossier.png"
+				url="categorieadmin.xhtml" />
+			<p:menuitem value="Recherche" icon="/images/Loupe.png"
+				url="rechercheadmin.xhtml" />
 
-		<p:panelGrid columns="2">
-			Description de la catégorie: <p:inputText
-				value="#{categorieMB.categorie.description}" />
-
-			Nom de la catégorie: <p:inputText
-				value="#{categorieMB.categorie.nomCategorie}" />
-			<h:commandButton value="Modifier"
-				action="#{categorieMB.modifierCategorie}" />
-
-		</p:panelGrid>
-
-
+		</p:stack>
 	</h:form>
 
+	<p:panelGrid columns="3" layout="grid">
 
+
+		<h:form>
+			<h1>Ajout d'une catégorie de produit</h1>
+
+			<p:panelGrid columns="2">
+			Description de la catégorie: <p:inputText
+					value="#{categorieMB.categorie.description}" />
+
+			Nom de la catégorie: <p:inputText
+					value="#{categorieMB.categorie.nomCategorie}" />
+			</p:panelGrid>
+			<p:commandButton value="Ajouter la catégorie"
+				action="#{categorieMB.ajouterCategorie}" />
+
+		</h:form>
+
+
+		<h:form>
+			<h1>Supprimer une catégorie</h1>
+
+			<p:panelGrid columns="2">
+			ID de la catégorie : <p:inputText
+					value="#{categorieMB.categorie.idCategorie}" />
+			</p:panelGrid>
+			<p:commandButton value="Supprimer la catégorie"
+				action="#{categorieMB.supprimerCategorie}" update=":message" />
+
+		</h:form>
+
+
+		<h:form>
+			<h1>Modifier une catégorie de produit</h1>
+			<p:panelGrid columns="2">
+		
+				ID de la catégorie": <p:inputText
+					value="#{categorieMB.categorie.idCategorie}" />
+
+			Description de la catégorie: <p:inputText
+					value="#{categorieMB.categorie.description}" />
+
+			Nom de la catégorie: <p:inputText
+					value="#{categorieMB.categorie.nomCategorie}" />
+
+			</p:panelGrid>
+			<p:commandButton value="Modifier"
+				action="#{categorieMB.modifierCategorie}" />
+
+
+		</h:form>
+
+	</p:panelGrid>
 </h:body>
 
 

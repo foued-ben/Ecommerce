@@ -16,7 +16,9 @@
 	<h:form>
 		<h:commandButton value="Se déconnecter" action="#{aMB.seDeconnecter}" />
 	</h:form>
-
+	<h:form>
+		<p:commandButton vale="Deconnexion" action="#{aMB.seDeconnecter}"  icon="ui-icon-power" styleClass="boutonDeconnexion"></p:commandButton>
+	</h:form>
 <h:commandButton  styleClass="ui-icon-test"/>
 
 	
@@ -29,8 +31,8 @@
 </p:stack>
 	
 
-	<h1>Liste des catégories</h1>
-
+	<h1 style="text-align: center; position: relative">Liste des catégories</h1>
+	<p:separator></p:separator>
 
 	<p:dataTable var="categorie" value="#{sessionScope.listeCategories}">
 		<p:column headerText="Id">
@@ -48,7 +50,8 @@
 
 	</p:dataTable>
 
-	<h1>Liste des produits</h1>
+	<h1 style="text-align: center;">Liste des produits</h1>
+	<p:separator></p:separator>
 
 	<p:dataTable var="produit" value="#{sessionScope.listeProduits}">
 		<p:column headerText="Id">
@@ -71,9 +74,14 @@
 			<h:outputText value="#{produit.quantite}" />
 		</p:column>
 
-		<p:column headerTexy="Categorie">
+		<p:column headerText="Categorie ID/Désignation">
 			<h:outputText value="#{produit.categorie.idCategorie}" />
+			<h:outputText value="/" />
+			
+			<h:outputText value="#{produit.categorie.nomCategorie}" />
+			
 		</p:column>
+
 
 	</p:dataTable>
 
