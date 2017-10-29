@@ -97,11 +97,16 @@
 
 		</h:panelGrid>
 
+
+
+	</h:form>
+
+	<h:form>
 		<h3 style="color: blue">Si vous êtes déjà client indiquer votre
 			code utilisateur fourni lors de votre première inscription
 			(actuellement c'est l'id)</h3>
 		<h:panelGrid columns="2">
-		
+
 			<p:outputLabel for="idID" value="Identifiant:" />
 			<p:inputMask id="idID" value="#{cliMB.client.idClient}" />
 
@@ -109,16 +114,11 @@
 			<p:commandButton value="Enregistrer la commande" type="submit"
 				action="#{cliMB.nouvelleCommande}" icon="ui-icon-disk" />
 
-
+	
 		</h:panelGrid>
-
-
-		<h4 style="color: red; text-align: center">
-			<h:messages></h:messages>
-		</h4>
+		<p:growl autoUpdate="true"></p:growl>
 	</h:form>
 
 
-	<h:messages style="color:red"></h:messages>
 </h:body>
 </html>

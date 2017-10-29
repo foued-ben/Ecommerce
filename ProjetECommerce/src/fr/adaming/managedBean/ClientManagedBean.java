@@ -251,7 +251,7 @@ public class ClientManagedBean implements Serializable {
 		}
 	}
 
-	public void ajouterPanier() {
+	public String ajouterPanier() {
 		// On récupère le panier de la session
 		Panier panier = (Panier) maSession.getAttribute("panierSession");
 		// On récupère la liste des commandes déjà effectuée
@@ -316,7 +316,7 @@ public class ClientManagedBean implements Serializable {
 
 		}
 
-		// return "produitclient";
+		 return "produitclient";
 	}
 
 	public String supprProdPanier() {
