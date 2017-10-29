@@ -23,7 +23,8 @@
 				url="categorieadmin.xhtml" />
 			<p:menuitem value="Recherche" icon="/images/Loupe.png"
 				url="rechercheadmin.xhtml" />
-
+			<p:menuitem value="Déconnexion" icon="/images/deconnexion.png"
+				action="#{aMB.seDeconnecter}"></p:menuitem>
 		</p:stack>
 	</h:form>
 
@@ -31,7 +32,7 @@
 
 
 		<h:form>
-			<h1>Ajout d'une catégorie de produit</h1>
+			<h1 style="text-align: center;">Ajout d'une catégorie de produit</h1>
 
 			<p:panelGrid columns="2">
 			Description de la catégorie: <p:inputText
@@ -47,7 +48,7 @@
 
 
 		<h:form>
-			<h1>Supprimer une catégorie</h1>
+			<h1 style="text-align: center;">Supprimer une catégorie</h1>
 
 			<p:panelGrid columns="2">
 			ID de la catégorie : <p:inputText
@@ -60,7 +61,8 @@
 
 
 		<h:form>
-			<h1>Modifier une catégorie de produit</h1>
+			<h1 style="text-align: center;">Modifier une catégorie de
+				produit</h1>
 			<p:panelGrid columns="2">
 		
 				ID de la catégorie": <p:inputText

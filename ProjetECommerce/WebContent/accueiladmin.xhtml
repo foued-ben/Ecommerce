@@ -9,29 +9,29 @@
 <h:head>
 	<title>Accueil</title>
 	<h:outputStylesheet library="css" name="style.css" />
-	
+
 </h:head>
 
 <h:body>
-	<h:form>
-		<h:commandButton value="Se déconnecter" action="#{aMB.seDeconnecter}" />
-	</h:form>
-	<h:form>
-		<p:commandButton vale="Deconnexion" action="#{aMB.seDeconnecter}"  icon="ui-icon-power" styleClass="boutonDeconnexion"></p:commandButton>
-	</h:form>
-<h:commandButton  styleClass="ui-icon-test"/>
 
-	
-<p:stack icon="/images/stack.png" expanded="true"	>
-    <p:menuitem value="Accueil" icon="/images/PC.png" url="accueiladmin.xhtml"/>
-    <p:menuitem value="Produits" icon="/images/BoiteCarton.png" url="produitadmin.xhtml"/>
-    <p:menuitem value="Catégories" icon="/images/dossier.png" url="categorieadmin.xhtml"/>
-    <p:menuitem value="Recherche" icon="/images/Loupe.png" url="rechercheadmin.xhtml"/>
-    
-</p:stack>
-	
+	<h:form>
+		<p:stack icon="/images/stack.png" expanded="true">
+			<p:menuitem value="Accueil" icon="/images/PC.png"
+				url="accueiladmin.xhtml" />
+			<p:menuitem value="Produits" icon="/images/BoiteCarton.png"
+				url="produitadmin.xhtml" />
+			<p:menuitem value="Catégories" icon="/images/dossier.png"
+				url="categorieadmin.xhtml" />
+			<p:menuitem value="Recherche" icon="/images/Loupe.png"
+				url="rechercheadmin.xhtml" />
+			<p:menuitem value="Déconnexion" icon="/images/deconnexion.png"
+				action="#{aMB.seDeconnecter}"></p:menuitem>
+		</p:stack>
+	</h:form>
 
-	<h1 style="text-align: center; position: relative">Liste des catégories</h1>
+
+	<h1 style="text-align: center; position: relative">Liste des
+		catégories</h1>
 	<p:separator></p:separator>
 
 	<p:dataTable var="categorie" value="#{sessionScope.listeCategories}">
@@ -77,9 +77,9 @@
 		<p:column headerText="Categorie ID/Désignation">
 			<h:outputText value="#{produit.categorie.idCategorie}" />
 			<h:outputText value="/" />
-			
+
 			<h:outputText value="#{produit.categorie.nomCategorie}" />
-			
+
 		</p:column>
 
 

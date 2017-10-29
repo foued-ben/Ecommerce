@@ -21,7 +21,8 @@
 				url="categorieadmin.xhtml" />
 			<p:menuitem value="Recherche" icon="/images/Loupe.png"
 				url="rechercheadmin.xhtml" />
-
+			<p:menuitem value="Déconnexion" icon="/images/deconnexion.png"
+				action="#{aMB.seDeconnecter}"></p:menuitem>
 		</p:stack>
 	</h:form>
 
@@ -29,7 +30,7 @@
 
 
 		<h:form>
-			<h1>Ajout de produit</h1>
+			<h1 style="text-align: center;">Ajout de produit</h1>
 
 			<p:panelGrid columns="2">
 	
@@ -47,7 +48,7 @@
 
 
 		<h:form>
-			<h1>Suppression de produit</h1>
+			<h1 style="text-align: center;">Suppression de produit</h1>
 
 			<p:panelGrid columns="2">
 			ID du produit: <p:inputText value="#{produitMB.produit.idProduit}" />
@@ -64,7 +65,7 @@
 
 
 		<h:form>
-			<h1 style="text-align: center">Modification d'un produit</h1>
+			<h1 style="text-align: center;">Modification d'un produit</h1>
 
 			<p:panelGrid columns="2">
 					ID du produit": <p:inputText value="#{produitMB.produit.idProduit}" />
