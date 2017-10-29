@@ -23,6 +23,7 @@ public class Client {
 	private String adresse;
 	private String email;
 	private String tel;
+	private String codePerso;
 	
 	// Association avec Commande
 	@OneToMany(mappedBy="client")
@@ -99,14 +100,29 @@ public class Client {
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-	// toString
+	
 
+	public String getCodePerso() {
+		return codePerso;
+	}
+
+	public void setCodePerso(String codePerso) {
+		this.codePerso = codePerso;
+	}
+
+	
+	// toString
 
 	@Override
 	public String toString() {
 		return "Client [idClient=" + idClient + ", nomClient=" + nomClient + ", adresse=" + adresse + ", email=" + email
-				+ ", tel=" + tel + "]";
+				+ ", tel=" + tel + ", codePerso=" + codePerso + "]";
 	}
 	
+	
+
+
+
+
 	
 }

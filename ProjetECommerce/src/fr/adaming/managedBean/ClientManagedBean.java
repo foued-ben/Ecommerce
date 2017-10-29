@@ -350,8 +350,26 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	public String enregistrement() {
-		Client cli_enr = cliService.enregitrementClient(this.client);
+		//On génère un code personnel que le client pourra utilisé pour les commandes ultérieures
+		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		StringBuilder code = new StringBuilder();
+		
+		int max =caracteres.length()- 1;
 
+		for (int i=1;i<10;i++){
+			//System.out.println(i);
+			int emplacementCarac = (int) Math.floor(max*Math.random());
+			char caracTemp = caracteres.charAt(emplacementCarac);
+			//System.out.println("Nombre"+i+"Caractere"+caracteres.charAt(emplacementCarac));
+			code.append(caracTemp);
+		}
+		// On ajoute le code au client
+		System.out.println(code);
+		this.client.setCodePerso(code.toString());
+		
+		System.out.println(this.client.getCodePerso());
+		Client cli_enr = cliService.enregitrementClient(this.client);
+		
 		this.client = cli_enr;
 		// On récupère la liste des commandes
 		Panier panier = (Panier) maSession.getAttribute("panierSession");
