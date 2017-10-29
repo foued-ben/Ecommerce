@@ -254,14 +254,36 @@ public class ClientManagedBean implements Serializable {
 	public void ajouterPanier() {
 		// On récupère le panier de la session
 		Panier panier = (Panier) maSession.getAttribute("panierSession");
-		System.out.println(panier);
 		// On récupère la liste des commandes déjà effectuée
 		List<LigneCommande> listeCommande = panier.getListeLignesCommande();
-		System.out.println("La liste");
-		System.out.println(listeCommande);
 		// On récupère le produit demandé.
 		Produit produitCherche = produitService.getProduit(this.produitDemande);
-
+		
+		
+		// On initialise la ligne de commande qui devra être supprimer.
+		LigneCommande ligneCommandeSupp = null;
+			
+		// On vérifie si le produit a été commandé avant 
+		for (LigneCommande commande : listeCommande){
+			Produit produitTemp = commande.getProduit();
+			int idProduitTemp =produitTemp.getIdProduit();
+			System.out.println(idProduitTemp);
+			if(idProduitTemp == produitDemande.getIdProduit() ){
+				// On ajoute la quantité déjà commandé à la quantité demandé.
+				int nombreCommandeActualise = this.nombreCommande+commande.getQuantite();
+				this.nombreCommande = this.nombreCommande+commande.getQuantite();
+				System.out.println("Nombre total commandé " +nombreCommandeActualise);
+				// On supprime la ligne de commande de la liste 
+				ligneCommandeSupp = commande;
+			}
+		}
+		// On vérifie que la commande est possible avec le nouveau nombre demandé.
+		if(nombreCommande<= produitCherche.getQuantite()){
+			listeCommande.remove(ligneCommandeSupp);
+		} else{
+			
+		}
+		
 		// On vérifie qu'une quantité suffisante de produit est en stock
 		if (nombreCommande <= produitCherche.getQuantite() && nombreCommande > 0) {
 			System.out.println("Stock suffisant");
