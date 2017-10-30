@@ -25,6 +25,26 @@ img.superposebis {
     top : 300px;
 }
 
+#img_3 {
+    z-index: 11;
+    left : 540px ; 
+    bottom: 310px ; 
+    top : 150px;
+}
+
+#img_4 {
+    z-index: 11;
+    left : 640px ; 
+    bottom: 310px ; 
+    top : 150px;
+}
+
+#img_5 {
+    z-index: 11;
+    left : 940px ; 
+    bottom: 310px ; 
+    top : 150px;
+}
 
 .container {
     position: relative; 

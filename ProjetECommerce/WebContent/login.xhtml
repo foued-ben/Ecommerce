@@ -10,40 +10,49 @@
 	<title>Login</title>
 </h:head>
 
-<h:body style="background-image : url(images/fond_nuit.jpg);">
+<h:body style="background-image :   url(images/fond_nuit.jpg); ">
 
-	<h:outputStylesheet library="css" name="style.css"  />
-<div class= "container">
-<img width="1350" height="400" src="images/disneyland1.jpg"/>
-<div class="caption">
-<h1  style="color: gold;">Disney Store</h1>   </div>
-<div id="click"><h2  style="color: white;">Pour acceder au site clique ici </h2></div>
-	<h:form>
-		<div style="color: white">
-		<h:panelGrid columns="2">
+	<h:outputStylesheet library="css" name="style.css" />
+	<div class="container">
+		<img width="1350" height="400" src="images/disneyland1.jpg" />
+		<div class="caption">
+			<h1 style="color: gold;">Disney Store</h1>
+		</div>
+		<div id="click">
+			<h2 style="color: white;">Pour acceder au site clique ici</h2>
+		</div>
+		<h:form>
+			<div style="color: white">
+				<h:panelGrid columns="2">
 			Je suis administrateur 
 			<p:separator />
 	
-			Identification : <br/> <h:inputText value="#{aMB.admin.identifiant}" /><br/>
-			Mot de passe : <br/> <h:inputText value="#{aMB.admin.mdp}" /><br/>
+			Identification : <br />
+					<h:inputText value="#{aMB.admin.identifiant}" />
+					<br />
+			Mot de passe : <br />
+					<h:inputText value="#{aMB.admin.mdp}" />
+					<br />
 
-			<h:commandButton value="Se connecter" action="#{aMB.seConnecter}" />
-		</h:panelGrid>
-		</div>
-	</h:form>
+					<h:commandButton value="Se connecter" action="#{aMB.seConnecter}" />
+				</h:panelGrid>
+			</div>
+		</h:form>
 
-</div>
+	</div>
 
-<!-- 	<p:graphicImage value="/images/dossier.png" stream="false" /> -->
-			<IMG class="superposebis"  id="img_2" src="images/Aladdin.png" width="100" height="100" />
+	<!-- 	<p:graphicImage value="/images/dossier.png" stream="false" /> -->
+	<IMG class="superposebis" id="img_2" src="images/Aladdin.png"
+		width="100" height="100" />
 
 
 	<h:messages style="color:red"></h:messages>
 
 	<h:form>
 		<p:commandLink action="#{cliMB.instancierPanierDansSession}">
-<!-- 			<h:outputText value="Client" /> -->
-			<IMG class="superpose"  id="img_1" src="images/Mickey.png" width="200" height="200" />
+			<!-- 			<h:outputText value="Client" /> -->
+			<IMG class="superpose" id="img_1" src="images/Mickey.png" width="200"
+				height="200" />
 		</p:commandLink>
 
 	</h:form>
