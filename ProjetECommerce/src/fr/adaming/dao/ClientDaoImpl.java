@@ -73,6 +73,7 @@ public class ClientDaoImpl implements IClientDao {
 		Query query = em.createQuery(req);
 		// Production du paramètre
 		StringBuilder intitule = new StringBuilder();
+		intitule.append('%');
 		intitule.append(mot);
 		intitule.append('%');
 		String intituleParam = intitule.toString();
