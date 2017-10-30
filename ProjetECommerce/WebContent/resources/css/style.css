@@ -27,21 +27,21 @@ img.superposebis {
 
 #img_3 {
     z-index: 11;
-    left : 540px ; 
+    left : 140px ; 
     bottom: 310px ; 
     top : 150px;
 }
 
 #img_4 {
     z-index: 11;
-    left : 640px ; 
+    left : 590px ; 
     bottom: 310px ; 
     top : 150px;
 }
 
 #img_5 {
     z-index: 11;
-    left : 940px ; 
+    left : 1040px ; 
     bottom: 310px ; 
     top : 150px;
 }
@@ -49,7 +49,12 @@ img.superposebis {
 .container {
     position: relative; 
 
+}
 
+.body{
+	width: 1200px; 
+	height: 800px; 
+	
 }
 
 .container .caption {
@@ -62,6 +67,25 @@ img.superposebis {
     position: absolute;
     bottom: 120px;
     left: 400px;
+}
+
+#aladdin {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+
+#elsa {
+    position: absolute;
+    bottom: 20px;
+    left: 500px;
+}
+
+#simba {
+    position: absolute;
+    bottom: 20px;
+    left: 1000px;
 }
 
 .container .captionlog {
