@@ -10,6 +10,16 @@
 	<title>categories</title>
 </h:head>
 <h:body style="background-image :   url(images/fond_nuit.jpg); ">
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<div class="container">
+		<img width="1350" height="400" src="images/disneyland1.jpg" />
+		<div class="caption">
+			<h1 style="color: gold;">Disney Store</h1>
+		</div>
+	</div>
+
+
 	<h:form>
 		<p:breadCrumb>
 			<p:menuitem value="Accueil" url="accueilclient.xhtml" />
@@ -74,10 +84,10 @@
 
 
 		<h:form>
-			<h3 style="color: blue">Enregistrez vos coordonnées afin de
+			<h3 style="color: gold">Enregistrez vos coordonnées afin de
 				poursuivre la commande</h3>
 
-
+	<div style="color: white">
 			<h:panelGrid columns="2">
 				<p:outputLabel for="nomID" value="Nom:" />
 				<p:inputMask id="nomID" value="#{cliMB.client.nomClient}" />
@@ -91,37 +101,40 @@
 
 				<p:outputLabel for="telID" value="Téléphone:" />
 				<p:inputMask id="telID" value="#{cliMB.client.tel}" />
-
-				<p:commandButton value="Enregistrer la commande" type="submit"
-					action="#{cliMB.enregistrement}" icon="ui-icon-disk" />
-
 			</h:panelGrid>
+	</div>
+			<p:commandButton value="Enregistrer la commande" type="submit"
+				action="#{cliMB.enregistrement}" icon="ui-icon-disk" />
+
 
 
 
 		</h:form>
-			<h:form>
-				<h3 style="color: blue">Si vous êtes déjà client indiquer votre
-					code utilisateur fourni lors de votre première inscription
-					(actuellement c'est l'id)</h3>
-				<h:panelGrid columns="2">
+		<h:form>
+			<h3 style="color: gold">Si vous êtes déjà client indiquer votre
+				code utilisateur fourni lors de votre première inscription
+				(actuellement c'est l'id)</h3>
+				
+				
+					<div style="color: white">
+				
+			<h:panelGrid columns="2">
 
-					<p:outputLabel for="idID" value="Identifiant:" />
-					<p:inputMask id="idID" value="#{cliMB.client.idClient}" />
+				<p:outputLabel for="idID" value="Identifiant:" />
+				<p:inputMask id="idID" value="#{cliMB.client.idClient}" />
 
-					<p:outputLabel for="codeID" value="Code Personel :" />
-					<p:inputMask id="codeID" value="#{cliMB.client.codePerso}" />
+				<p:outputLabel for="codeID" value="Code Personel :" />
+				<p:inputMask id="codeID" value="#{cliMB.client.codePerso}" />
 
+			</h:panelGrid>
+			</div>
+			<p:commandButton value="Enregistrer la commande" type="submit"
+				action="#{cliMB.nouvelleCommande}" icon="ui-icon-disk" />
 
-					<p:commandButton value="Enregistrer la commande" type="submit"
-						action="#{cliMB.nouvelleCommande}" icon="ui-icon-disk" />
-
-
-				</h:panelGrid>
-			</h:form>
+		</h:form>
 	</h:panelGrid>
-	
-				<p:growl autoUpdate="true"></p:growl>
+
+	<p:growl autoUpdate="true"></p:growl>
 
 </h:body>
 </html>
