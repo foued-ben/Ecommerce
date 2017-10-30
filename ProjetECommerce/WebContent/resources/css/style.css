@@ -16,13 +16,13 @@ img.superposebis {
     z-index: 10;
     left : 860px ; 
     bottom: 0px ; 
-    top : 200px;
+    top : 300px;
 }
 #img_2 {
     z-index: 11;
     left : 740px ; 
     bottom: 160px ; 
-    top : 300px;
+    top : 400px;
 }
 
 #img_3 {
@@ -59,7 +59,7 @@ img.superposebis {
 
 .container .caption {
     position: absolute;
-    bottom: 400px;
+    bottom: 500px;
     left: 400px;
 }
 
@@ -100,14 +100,14 @@ img.superposebis {
     position: absolute;
     bottom: 20px;
     left: 400px;
-    top: 150px;
+    top: 170px;
 }
 
 #pumba {
     position: absolute;
     bottom: 200px;
     left: 800px;
-    top: 200px; 
+    top: 250px; 
 }
 
 #img_simba {
