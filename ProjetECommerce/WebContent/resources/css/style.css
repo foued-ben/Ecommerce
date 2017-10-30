@@ -88,6 +88,37 @@ img.superposebis {
     left: 1000px;
 }
 
+#rafiki {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    top: 150px;
+}
+
+
+#timon {
+    position: absolute;
+    bottom: 20px;
+    left: 400px;
+    top: 150px;
+}
+
+#pumba {
+    position: absolute;
+    bottom: 200px;
+    left: 800px;
+    top: 200px; 
+}
+
+#img_simba {
+    position: absolute;
+    bottom: 20px;
+    left: 1000px;
+    top: 150px; 
+}
+
+
+
 .container .captionlog {
     position: absolute;
     bottom: 20px;
