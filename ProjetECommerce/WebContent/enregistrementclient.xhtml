@@ -13,7 +13,7 @@
 
 <h:body style="background-image :   url(images/sable.jpg); ">
 
-<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="style.css" />
 	<div class="container">
 		<img width="1350" height="400" src="images/fondroilion.jpg" />
 		<div class="caption">
@@ -24,12 +24,7 @@
 
 	<h:form>
 		<p:breadCrumb>
-			<p:menuitem value="Accueil" url="accueilclient.xhtml" />
-			<p:menuitem value="Catégories" url="categorie.xhtml"
-				update=":listeCat" />
-			<p:menuitem value="Produits" url="produitclient.xhtml"
-				update=":listeProd" />
-			<p:menuitem value="Mon panier" url="panierclient.xhtml" />
+			<p:menuitem value="Retour à l'accueil" url="login.xhtml" />
 		</p:breadCrumb>
 	</h:form>
 	<p:separator />
@@ -40,37 +35,42 @@
 
 
 
-	<h1 style="color: gold; text-align: center">Récapitulatif de la commande</h1>
-	
-		<h2 style="color: green; text-align: center">Client</h2>
-	
-	   <p:dataTable var="cl" value="#{cliMB.client}">
-        <p:column headerText="Id">
-            <h:outputText value="#{cl.idClient}" />
-        </p:column>
- 
-        <p:column headerText="Nom">
-            <h:outputText value="#{cl.nomClient}" />
-        </p:column>
- 
-        <p:column headerText="Adresse">
-            <h:outputText value="#{cl.adresse}" />
-        </p:column>
- 
-        <p:column headerText="Email">
-            <h:outputText value="#{cl.email}" />
-        </p:column>
-        
-         <p:column headerText="Téléphone">
-            <h:outputText value="#{cl.tel}" />
-        </p:column>
-        
-    </p:dataTable>
+	<h1 style="color: gold; text-align: center">Récapitulatif de la
+		commande</h1>
 
-  <p:separator />
-  	<h2 style="color: green; text-align: center">Panier</h2>
-  
-  
+	<h2 style="color: green; text-align: center">Client</h2>
+
+	<p:dataTable var="cl" value="#{cliMB.client}">
+		<p:column headerText="Id">
+			<h:outputText value="#{cl.idClient}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{cl.nomClient}" />
+		</p:column>
+
+		<p:column headerText="Adresse">
+			<h:outputText value="#{cl.adresse}" />
+		</p:column>
+
+		<p:column headerText="Email">
+			<h:outputText value="#{cl.email}" />
+		</p:column>
+
+		<p:column headerText="Téléphone">
+			<h:outputText value="#{cl.tel}" />
+		</p:column>
+
+		<p:column headerText="Code Personel">
+			<h:outputText value="#{cl.codePerso}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<p:separator />
+	<h2 style="color: gold; text-align: center">Panier</h2>
+
+
 	<p:dataTable var="ligneCommande"
 		value="#{sessionScope.panierSession.listeLignesCommande}"
 		id="listePanier">
@@ -92,17 +92,17 @@
 
 	<p:spacer height="50px" />
 	
-	Prix Total  : <h:outputText value="#{cliMB.prixTot}"/>
-	
+	Prix Total  : <h:outputText value="#{cliMB.prixTot}" />
 
-	
-	
+
+
+
 	<p:separator />
 
 
-			<h4 style="color: red; text-align: center">
-				<h:messages></h:messages>
-			</h4>
+	<h4 style="color: red; text-align: center">
+		<h:messages></h:messages>
+	</h4>
 
 </h:body>
 </html>
